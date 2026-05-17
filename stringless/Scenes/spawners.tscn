@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://da18oa1a57m6e"]
+
+[node name="Spawners" type="Node2D" unique_id=1189345948]
+
+[node name="LaneA" type="Marker2D" parent="." unique_id=1611588709]
+
+[node name="LaneS" type="Marker2D" parent="." unique_id=1818758230]
+
+[node name="LaneD" type="Marker2D" parent="." unique_id=2004327368]
+
+[node name="LaneF" type="Marker2D" parent="." unique_id=480823143]
