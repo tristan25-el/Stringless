@@ -1,3 +1,14 @@
 [gd_scene format=3 uid="uid://c8pdxi5a2fhp"]
 
+[ext_resource type="Script" uid="uid://d0bdl3olwjybk" path="res://Scenes/tiles.gd" id="1_mlaw6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nlajs"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
 [node name="Tiles" type="Node2D" unique_id=1357548719]
+script = ExtResource("1_mlaw6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1194910938]
+position = Vector2(25, 61.615997)
+scale = Vector2(0.387, 0.95912504)
+texture = SubResource("CompressedTexture2D_nlajs")

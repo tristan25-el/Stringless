@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Stringless"
+run/main_scene="uid://b3a2crt6op3a3"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -1,7 +1,29 @@
-[gd_scene format=3 uid="uid://b3a2crt6op3a3"]
+[gd_scene format=3 uid="uid://ch6uoxhc7j5et"]
+
+[ext_resource type="Texture2D" uid="uid://d074naipjlwb5" path="res://background.png" id="1_jjgbg"]
+
+[ext_resource type="Script" uid="uid://cfnf71ndkiore" path="res://Scenes/main.gd" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://c8pdxi5a2fhp" path="res://Scenes/tiles.tscn" id="2_8gbba"]
 
 [node name="Main" type="Node2D" unique_id=1947135311]
+script = ExtResource("1_bo1nx")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1378118708]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=463368145]
+<<<<<<< HEAD
+
+[node name="Tiles" parent="." unique_id=1357548719 instance=ExtResource("2_8gbba")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1038661874]
+autostart = true
+
+[node name="Dissapear" type="Timer" parent="." unique_id=790619516]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Dissapear" to="Tiles" method="_on_dissapear_timeout"]
+=======
+position = Vector2(150, 270)
+texture = ExtResource("1_jjgbg")
+>>>>>>> 3777a6d6ceb94837f8242770e11d0409e4969639

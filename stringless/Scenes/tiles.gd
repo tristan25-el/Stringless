@@ -1,0 +1,20 @@
+extends Node2D
+class_name Tiles
+@export var speed = 100
+
+
+func _physics_process(delta: float) -> void:
+	position.y += speed * delta
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_dissapear_timeout() -> void:
+	queue_free() # Replace with function body.
