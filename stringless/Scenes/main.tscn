@@ -8,5 +8,5 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=463368145]
 position = Vector2(587.5, 323.50003)
-scale = Vector2(3.491, 1.7972224)
+scale = Vector2(3.497, 1.8)
 texture = ExtResource("1_jjgbg")
