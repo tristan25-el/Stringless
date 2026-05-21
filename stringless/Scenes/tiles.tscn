@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://c8pdxi5a2fhp"]
 
+[ext_resource type="Script" uid="uid://d0bdl3olwjybk" path="res://Scenes/tiles.gd" id="1_3p6xg"]
+[ext_resource type="Texture2D" uid="uid://by6jt7nf2emsp" path="res://Aset/TILES.png" id="1_mlaw6"]
+
 [node name="Tiles" type="Node2D" unique_id=1357548719]
+script = ExtResource("1_3p6xg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=783140054]
+texture = ExtResource("1_mlaw6")

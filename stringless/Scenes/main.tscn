@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cfnf71ndkiore" path="res://Scenes/main.gd" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://d074naipjlwb5" path="res://Aset/background.png" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://c8pdxi5a2fhp" path="res://Scenes/tiles.tscn" id="3_8gbba"]
+[ext_resource type="AudioStream" uid="uid://2jkjrl4mdx86" path="res://katy-perry-roar-22-cstd.ogg" id="4_jjvhh"]
 
 [node name="Main" type="Node2D" unique_id=1947135311]
 script = ExtResource("1_bo1nx")
+tile_scene = ExtResource("3_8gbba")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1378118708]
 
@@ -12,3 +15,6 @@ script = ExtResource("1_bo1nx")
 position = Vector2(587.5, 323.50003)
 scale = Vector2(3.497, 1.8)
 texture = ExtResource("1_jjgbg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1298069848]
+stream = ExtResource("4_jjvhh")

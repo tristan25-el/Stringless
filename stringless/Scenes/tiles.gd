@@ -1,0 +1,40 @@
+extends Node2D # Or Area2D if your tile is an Area2D
+
+var speed: float = 0.0
+var hit_line_y: float = 550.0 # The Y-coordinate of your judgement line (change this to fit your screen)
+var spawn_y: float = -50.0    # Starts just off-screen at the top
+
+# This is the function called by your main script's 'new_tile.initialize(data, spawn_lead_time)'
+func initialize(data: Dictionary, lead_time: float):
+	# 1. Get the actual width of the game window
+	var window_width = get_viewport_rect().size.x
+	
+	# 2. Calculate the 3/5 center play area
+	var play_area_width = window_width * (3.0 / 5.0)
+	var left_margin = window_width * (1.0 / 5.0) # The empty 1/5 space on the left
+	
+	# 3. Divide the center area into 4 lanes (for A, S, D, F)
+	var lane_width = play_area_width / 4.0
+	var lane_number = data.get("lane", 0) # Expects 0, 1, 2, or 3
+	
+	# 4. Position the tile perfectly in the middle of its assigned lane
+	position.x = left_margin + (lane_number * lane_width) + (lane_width / 2.0)
+	position.y = spawn_y
+	
+	# 5. Speed calculation (Distance / Time)
+	var distance_to_travel = hit_line_y - spawn_y
+	speed = distance_to_travel / lead_time
+
+	# Visual check for impostors
+	if data.get("is_impostor", false):
+		modulate = Color.RED
+
+func _process(delta: float) -> void:
+	# Move downwards every frame
+	position.y += speed * delta
+	
+	# Safety cleanup: If the player completely misses the tile, delete it 
+	# so it doesn't lag your game forever
+	if position.y > hit_line_y + 100:
+		print("Missed note!")
+		queue_free()
