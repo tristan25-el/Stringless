@@ -1,11 +1,22 @@
 extends Node2D # Or Area2D if your tile is an Area2D
 
 var speed: float = 0.0
-var hit_line_y: float = 550.0 # The Y-coordinate of your judgement line (change this to fit your screen)
-var spawn_y: float = -50.0    # Starts just off-screen at the top
+var hit_line_y: float = 540.0 # The Y-coordinate of your judgement line (change this to fit your screen)
+var spawn_y: float = -120.0    # Starts just off-screen at the top
 
+var lane: int = 0
+var hit_time: float = 0.0
+var already_hit := false
+
+func _ready() -> void:
+	add_to_group("notes")
+	scale = Vector2(0.5, 0.5)
+	
 # This is the function called by your main script's 'new_tile.initialize(data, spawn_lead_time)'
 func initialize(data: Dictionary, lead_time: float):
+	lane = data.get("lane", 0)
+	hit_time = data.get("time", 0.0)
+	
 	# 1. Get the actual width of the game window
 	var window_width = get_viewport_rect().size.x
 	
@@ -35,6 +46,16 @@ func _process(delta: float) -> void:
 	
 	# Safety cleanup: If the player completely misses the tile, delete it 
 	# so it doesn't lag your game forever
-	if position.y > hit_line_y + 100:
-		print("Missed note!")
+	if position.y > hit_line_y + 100 and !already_hit:
+		already_hit = true
+		get_parent().register_miss()
 		queue_free()
+		
+func hit():
+	if already_hit:
+		return
+	already_hit = true
+	queue_free()
+	
+func can_be_hit() -> bool:
+	return abs(position.y - hit_line_y) < 80

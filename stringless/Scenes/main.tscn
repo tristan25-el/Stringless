@@ -18,3 +18,9 @@ texture = ExtResource("1_jjgbg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1298069848]
 stream = ExtResource("4_jjvhh")
+
+[node name="HitLine" type="ColorRect" parent="." unique_id=843247999]
+offset_left = 242.0
+offset_top = 540.0
+offset_right = 933.0
+offset_bottom = 550.0
