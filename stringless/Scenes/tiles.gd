@@ -7,6 +7,7 @@ var spawn_y: float = -120.0    # Starts just off-screen at the top
 var lane: int = 0
 var hit_time: float = 0.0
 var already_hit := false
+var miss_window := 0.20
 
 func _ready() -> void:
 	add_to_group("notes")
@@ -57,5 +58,5 @@ func hit():
 	already_hit = true
 	queue_free()
 	
-func can_be_hit() -> bool:
-	return abs(position.y - hit_line_y) < 80
+func can_be_hit(current_time: float) -> bool:
+	return abs(current_time - hit_time) <= miss_window

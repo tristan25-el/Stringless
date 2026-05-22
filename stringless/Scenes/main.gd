@@ -107,13 +107,13 @@ func check_hit(lane: int):
 	var current_time = get_song_time()
 	var closest_note = null
 	var closest_diff = INF
-	for child in get_tree().get_nodes_in_group("notes"):
+	for child in get_tree().get_nodes_in_group("notes"): #Agar yang diperiksa hanya tiles-nya saja
 		if child.has_method("hit"):
 			if child.lane != lane:
 				continue
 			if child.already_hit:
 				continue
-			if !child.can_be_hit():
+			if !child.can_be_hit(current_time): # Penerapan active window
 				continue
 			var diff = abs(current_time - child.hit_time)
 			if diff < closest_diff:
