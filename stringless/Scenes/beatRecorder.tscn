@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cust0l04vami0"]
 
 [ext_resource type="Script" uid="uid://c28dk6pj4652k" path="res://Scenes/beat_recorder.gd" id="1_etwcu"]
-[ext_resource type="AudioStream" uid="uid://2jkjrl4mdx86" path="res://katy-perry-roar-22-cstd.ogg" id="2_dp3lt"]
+[ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="2_etwcu"]
 
 [node name="BeatRecorder" type="Node2D" unique_id=1798298101]
 script = ExtResource("1_etwcu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1584370745]
-stream = ExtResource("2_dp3lt")
+stream = ExtResource("2_etwcu")

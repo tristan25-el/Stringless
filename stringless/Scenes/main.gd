@@ -1,13 +1,14 @@
 extends Node2D
 
 # --- NEW VARIABLES ADDED HERE ---
-@export var tile_scene: PackedScene # This is where your tile scene goes
-@onready var music_player: AudioStreamPlayer = $AudioStreamPlayer # Assumes you have an AudioStreamPlayer node named this
+@export var tile_scene: PackedScene 
+@onready var music_player: AudioStreamPlayer = $AudioStreamPlayer 
 @export var global_offset := 0.0
 
 var current_note_index: int = 0 # Tracks which note is next in line to spawn
 var spawn_lead_time: float = 2.0 # How many seconds BEFORE the hit-time the tile should spawn
-# --------------------------------
+var intro_time: float = 0.0
+var music_started: bool = false
 
 var beat_map: Array = []
 
@@ -21,9 +22,9 @@ func load_beat_map(file_path: String):
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
 		var json_string = file.get_as_text()
-		file.close() # Biasakan menutup file setelah dibaca
+		file.close() 
 		
-		# Mengubah string JSON menjadi Array of Dictionaries di Godot 4
+		# Mengubah string JSON menjadi Array of Dictionaries
 		var parsed_data = JSON.parse_string(json_string)
 		
 		if parsed_data != null:
@@ -37,37 +38,44 @@ func load_beat_map(file_path: String):
 func _ready() -> void:
 	# Panggil fungsi saat game dimulai
 	load_beat_map("res://Aset/beats.json")
-	
 	print("Data Beat Map siap! Jumlah note: ", beat_map.size())
 	
-	# Automatically start playing the music once the map is successfully loaded
-	if beat_map.size() > 0 and music_player:
-		music_player.play()
-	# ----------------------------
+		# Start our countdown in the negatives (e.g., -2.0 seconds)
+	intro_time = -spawn_lead_time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# --- SPRAWNING LOGIC ADDED HERE (Replacing 'pass') ---
-	if not music_player or not music_player.playing:
+	if beat_map.size() == 0:
 		return
+	var current_time: float = 0.0
+	# --- INTRO COUNTDOWN TRACKER ---
+	if not music_started:
+		intro_time += delta
+		current_time = intro_time
 		
-	# Calculate highly accurate current audio time adjusted for latency
-	var current_time = get_song_time()
+		# Once the negative countdown hits 0, start the music!
+		if intro_time >= 0.0:
+			music_player.play()
+			music_started = true
+	else:
+		# If the music stops playing after starting, pause execution
+		if not music_player.playing:
+			return
+		current_time = get_song_time()
 
-	# Check if it's time to spawn upcoming notes
+	# SPAWNING LOOP
 	while current_note_index < beat_map.size():
 		var note_data = beat_map[current_note_index]
 		var hit_time = note_data["time"] 
 		
-		# If the song time has reached the point where the note needs to spawn
 		if current_time >= (hit_time - spawn_lead_time):
 			spawn_tile(note_data)
-			current_note_index += 1 # Move to the next note in your JSON list
+			current_note_index += 1 # Advance to next note
 		else:
-			break # Stop checking if the next note isn't ready yet
-	# ----------------------------------------------------
+			break
+	
 
-# --- NEW HELPER FUNCTION ADDED AT THE BOTTOM ---
+# spawn tiles
 func spawn_tile(data: Dictionary):
 	if tile_scene == null:
 		print("Warning: No tile scene assigned to PackedScene!")
@@ -76,7 +84,6 @@ func spawn_tile(data: Dictionary):
 	var new_tile = tile_scene.instantiate()
 	add_child(new_tile)
 	
-	# If your individual tile script has an setup function, run it here:
 	if new_tile.has_method("initialize"):
 		new_tile.initialize(data, spawn_lead_time)
 # ------------------------------------------------
