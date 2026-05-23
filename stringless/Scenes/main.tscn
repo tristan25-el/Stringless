@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d074naipjlwb5" path="res://Aset/background.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c8pdxi5a2fhp" path="res://Scenes/tiles.tscn" id="3_8gbba"]
 [ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://633ar1cynach" path="res://Scenes/label.gd" id="5_kry3j"]
 
 [node name="Main" type="Node2D" unique_id=1947135311]
 script = ExtResource("1_bo1nx")
@@ -24,3 +25,10 @@ offset_left = 242.0
 offset_top = 540.0
 offset_right = 933.0
 offset_bottom = 550.0
+
+[node name="ComboCounter" type="Label" parent="." unique_id=1557032852]
+offset_right = 239.0
+offset_bottom = 61.0
+text = "Combo :"
+horizontal_alignment = 1
+script = ExtResource("5_kry3j")

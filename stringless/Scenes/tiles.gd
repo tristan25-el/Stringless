@@ -1,7 +1,7 @@
-extends Node2D # Or Area2D if your tile is an Area2D
+extends Node2D 
 
 var speed: float = 0.0
-var hit_line_y: float = 540.0 # The Y-coordinate of your judgement line (change this to fit your screen)
+var hit_line_y: float = 540.0 # The Y-coordinate of judgement line
 var spawn_y: float = -120.0    # Starts just off-screen at the top
 
 var lane: int = 0
@@ -13,7 +13,7 @@ func _ready() -> void:
 	add_to_group("notes")
 	scale = Vector2(0.5, 0.5)
 	
-# This is the function called by your main script's 'new_tile.initialize(data, spawn_lead_time)'
+# This is the function called by main script's 'new_tile.initialize(data, spawn_lead_time)'
 func initialize(data: Dictionary, lead_time: float):
 	lane = data.get("lane", 0)
 	hit_time = data.get("time", 0.0)
