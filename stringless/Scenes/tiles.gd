@@ -73,9 +73,7 @@ func update_perspective() -> void:
 	var min_scale = 0.05
 	var max_scale = 0.60
 	var current_scale = lerp(min_scale, max_scale, visual_progress)
-	
-	var tilt_factor = 0.35
-	scale = Vector2(current_scale, current_scale * tilt_factor)
+	scale = Vector2(current_scale, current_scale)
 	
 	# 5. Safe to reveal! The tile is now perfectly positioned on the track.
 	visible = true
