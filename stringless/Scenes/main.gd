@@ -12,9 +12,9 @@ var music_started: bool = false
 
 var beat_map: Array = []
 
-var perfect_window := 0.05
-var good_window := 0.10
-var miss_window := 0.20
+var perfect_window := 0.10
+var good_window := 0.25
+var miss_window := 0.40
 var score := 0
 var combo := 0
 
