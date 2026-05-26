@@ -4,6 +4,7 @@ extends Node2D
 @export var tile_scene: PackedScene 
 @onready var music_player: AudioStreamPlayer = $AudioStreamPlayer 
 @export var global_offset := 0.0
+var current_game_time: float = 0.0
 
 var current_note_index: int = 0 # Tracks which note is next in line to spawn
 var spawn_lead_time: float = 2.0 # How many seconds BEFORE the hit-time the tile should spawn
@@ -47,11 +48,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if beat_map.size() == 0:
 		return
-	var current_time: float = 0.0
+		
 	# --- INTRO COUNTDOWN TRACKER ---
 	if not music_started:
 		intro_time += delta
-		current_time = intro_time
+		current_game_time = intro_time # Track negative time here
 		
 		# Once the negative countdown hits 0, start the music!
 		if intro_time >= 0.0:
@@ -61,16 +62,17 @@ func _process(delta: float) -> void:
 		# If the music stops playing after starting, pause execution
 		if not music_player.playing:
 			return
-		current_time = get_song_time()
+		current_game_time = get_song_time() # Track song position here
+	# --------------------------------
 
-	# SPAWNING LOOP
+	# SPAWNING LOOP (Updated to use current_game_time)
 	while current_note_index < beat_map.size():
 		var note_data = beat_map[current_note_index]
 		var hit_time = note_data["time"] 
 		
-		if current_time >= (hit_time - spawn_lead_time):
+		if current_game_time >= (hit_time - spawn_lead_time):
 			spawn_tile(note_data)
-			current_note_index += 1 # Advance to next note
+			current_note_index += 1 
 		else:
 			break
 	
