@@ -41,6 +41,7 @@ func _ready() -> void:
 	load_beat_map("res://Aset/beats.json")
 	print("Data Beat Map siap! Jumlah note: ", beat_map.size())
 	
+	
 		# Start our countdown in the negatives (e.g., -2.0 seconds)
 	intro_time = -spawn_lead_time
 

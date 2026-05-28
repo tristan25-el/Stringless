@@ -8,7 +8,7 @@ var miss_window := 0.20
 # --- PERSPECTIVE CONFIGURATION ---
 var initial_lead_time: float = 2.0
 var spawn_y: float = 485.0       # The top horizon line where notes appear tiny
-var hit_line_y: float = 1154.0    # The bottom judgment line where notes are hit
+var hit_line_y: float = 1350.0    # The bottom judgment line where notes are hit
 
 func _ready() -> void:
 	add_to_group("notes")
@@ -60,8 +60,8 @@ func update_perspective() -> void:
 	var window_width = get_viewport_rect().size.x
 	var vanishing_x = window_width / 2.0 
 	
-	var play_area_width = window_width * (3.0 / 5.0)
-	var left_margin = window_width * (1.0 / 5.0)
+	var play_area_width = window_width * 0.95
+	var left_margin = (window_width - play_area_width) / 2.0
 	var lane_width = play_area_width / 4.0
 	var final_x = left_margin + (lane * lane_width) + (lane_width / 2.0)
 	
