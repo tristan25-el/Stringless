@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://da18oa1a57m6e"]
 
 [node name="Spawners" type="Node2D" unique_id=1189345948]
+scale = Vector2(0.92275316, 1.3529422)
 
 [node name="LaneA" type="Marker2D" parent="." unique_id=1611588709]
 position = Vector2(40, -20)

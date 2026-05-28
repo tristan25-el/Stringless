@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ch6uoxhc7j5et"]
 
 [ext_resource type="Script" uid="uid://cfnf71ndkiore" path="res://Scenes/main.gd" id="1_bo1nx"]
-[ext_resource type="Texture2D" uid="uid://d074naipjlwb5" path="res://Aset/background.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c8pdxi5a2fhp" path="res://Scenes/tiles.tscn" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://d2wrvqqaeysxy" path="res://Aset/Background 2.png" id="3_kry3j"]
 [ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://633ar1cynach" path="res://Scenes/label.gd" id="5_kry3j"]
 
@@ -13,18 +13,19 @@ tile_scene = ExtResource("3_8gbba")
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1378118708]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=463368145]
-position = Vector2(587.5, 323.50003)
-scale = Vector2(3.497, 1.8)
-texture = ExtResource("1_jjgbg")
+position = Vector2(540, 960)
+scale = Vector2(0.656, 1)
+texture = ExtResource("3_kry3j")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1298069848]
 stream = ExtResource("4_jjvhh")
 
 [node name="HitLine" type="ColorRect" parent="." unique_id=843247999]
-offset_left = 242.0
-offset_top = 540.0
-offset_right = 933.0
-offset_bottom = 550.0
+offset_left = 159.0
+offset_top = 1154.0
+offset_right = 972.49
+offset_bottom = 1165.5096
+scale = Vector2(0.9305585, -1.3901384)
 
 [node name="ComboCounter" type="Label" parent="." unique_id=1557032852]
 offset_right = 239.0

@@ -7,8 +7,8 @@ var miss_window := 0.20
 
 # --- PERSPECTIVE CONFIGURATION ---
 var initial_lead_time: float = 2.0
-var spawn_y: float = 0.0       # The top horizon line where notes appear tiny
-var hit_line_y: float = 540.0    # The bottom judgment line where notes are hit
+var spawn_y: float = 485.0       # The top horizon line where notes appear tiny
+var hit_line_y: float = 1154.0    # The bottom judgment line where notes are hit
 
 func _ready() -> void:
 	add_to_group("notes")
@@ -18,7 +18,7 @@ func _ready() -> void:
 func initialize(data: Dictionary, lead_time: float):
 	lane = data.get("lane", 0)
 	hit_time = data.get("time", 0.0)
-	initial_lead_time = lead_time
+	initial_lead_time = lead_time		
 
 	if data.get("is_impostor", false):
 		modulate = Color.RED
