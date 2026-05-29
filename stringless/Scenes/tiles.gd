@@ -5,14 +5,13 @@ var hit_time: float = 0.0
 var already_hit := false
 var miss_window := 0.20
 
-# --- PERSPECTIVE CONFIGURATION ---
+# PERSPECTIVE CONFIGURATION
 var initial_lead_time: float = 2.0
 var spawn_y: float = 485.0       # The top horizon line where notes appear tiny
 var hit_line_y: float = 1350.0    # The bottom judgment line where notes are hit
 
 func _ready() -> void:
 	add_to_group("notes")
-	# Hide the tile immediately upon birth to prevent the top-left flash glitch!
 	visible = false
 	
 func initialize(data: Dictionary, lead_time: float):
@@ -29,7 +28,6 @@ func initialize(data: Dictionary, lead_time: float):
 func _process(delta: float) -> void:
 	update_perspective()
 	
-	# Safety cleanup: Despawn cleanly after crossing the judgment line
 	var main_node = get_parent()
 	if main_node and "current_game_time" in main_node:
 		var spawn_time = hit_time - initial_lead_time
@@ -40,7 +38,7 @@ func _process(delta: float) -> void:
 			main_node.register_miss()
 			queue_free()
 
-# --- UNIFIED PERSPECTIVE POSITIONING ---
+# UNIFIED PERSPECTIVE POSITIONING
 func update_perspective() -> void:
 	var main_node = get_parent()
 	if not main_node or not("current_game_time" in main_node):
@@ -48,34 +46,40 @@ func update_perspective() -> void:
 		
 	var current_time = main_node.current_game_time
 	
-	# 1. Calculate precise timeline progress
+	# Calculate precise timeline progress
 	var spawn_time = hit_time - initial_lead_time
 	var progress = (current_time - spawn_time) / initial_lead_time
 	progress = clamp(progress, 0.0, 2.0)
 	
-	# 2. Ultra-Safe 3D Perspective Power Curve
+
 	var visual_progress = pow(progress, 2.5)
 	
-	# 3. Calculate Positions based on Vanishing Point
+	# Calculate Positions based on Window Width
 	var window_width = get_viewport_rect().size.x
-	var vanishing_x = window_width / 2.0 
 	
+	# THE BOTTOM (Hitline Lane Layout)
 	var play_area_width = window_width * 0.95
 	var left_margin = (window_width - play_area_width) / 2.0
 	var lane_width = play_area_width / 4.0
 	var final_x = left_margin + (lane * lane_width) + (lane_width / 2.0)
 	
-	# Update positions
-	position.y = lerp(spawn_y, hit_line_y, visual_progress)
-	position.x = lerp(vanishing_x, final_x, visual_progress)
+	# THE TOP (Horizon Spawn Lane Layout)
+	# Tweak 0.20 to change how dramatically the lanes slant outward
+	var top_play_width = window_width * 0.20 
+	var top_left_margin = (window_width - top_play_width) / 2.0
+	var top_lane_width = top_play_width / 4.0
+	var spawn_x = top_left_margin + (lane * top_lane_width) + (top_lane_width / 2.0)
 	
-	# 4. Perspective Scaling (Tiny at top, large at bottom)
+	# Update positions down their unique individual track lines
+	position.y = lerp(spawn_y, hit_line_y, visual_progress)
+	position.x = lerp(spawn_x, final_x, visual_progress)
+	
+	# Perspective Scaling
 	var min_scale = 0.05
 	var max_scale = 0.60
 	var current_scale = lerp(min_scale, max_scale, visual_progress)
 	scale = Vector2(current_scale, current_scale)
 	
-	# 5. Safe to reveal! The tile is now perfectly positioned on the track.
 	visible = true
 
 func hit():

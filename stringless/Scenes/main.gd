@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 	if beat_map.size() == 0:
 		return
 		
-	# --- INTRO COUNTDOWN TRACKER ---
+	# INTRO COUNTDOWN TRACKER 
 	if not music_started:
 		intro_time += delta
 		current_game_time = intro_time # Track negative time here
@@ -64,9 +64,8 @@ func _process(delta: float) -> void:
 		if not music_player.playing:
 			return
 		current_game_time = get_song_time() # Track song position here
-	# --------------------------------
 
-	# SPAWNING LOOP (Updated to use current_game_time)
+	# SPAWNING LOOP (uses current_game_time)
 	while current_note_index < beat_map.size():
 		var note_data = beat_map[current_note_index]
 		var hit_time = note_data["time"] 
