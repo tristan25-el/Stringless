@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d2wrvqqaeysxy" path="res://Aset/Background 2.png" id="3_kry3j"]
 [ext_resource type="Script" uid="uid://cwoi4anvk400c" path="res://Scenes/background.gd" id="4_21xkr"]
 [ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="4_jjvhh"]
-[ext_resource type="Script" path="res://Scenes/label.gd" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://633ar1cynach" path="res://Scenes/label.gd" id="5_kry3j"]
 
 [node name="Main" type="Node2D" unique_id=1947135311]
 script = ExtResource("1_bo1nx")
@@ -27,6 +27,7 @@ offset_top = 1350.0
 offset_right = 1080.0
 offset_bottom = 1361.51
 scale = Vector2(1, -1.493)
+color = Color(0.26666668, 0.047058824, 0.047058824, 1)
 
 [node name="ComboCounter" type="Label" parent="." unique_id=1557032852]
 offset_right = 239.0
