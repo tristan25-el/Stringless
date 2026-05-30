@@ -1,9 +1,11 @@
 extends Node2D
-	 
+
 # --- NEW VARIABLES ADDED HERE ---
 @export var tile_scene: PackedScene 
 @onready var music_player: AudioStreamPlayer = $AudioStreamPlayer 
 @export var global_offset := 0.0
+
+@onready var player_character = $Player
 var current_game_time: float = 0.0
 
 var current_note_index: int = 0 # Tracks which note is next in line to spawn
@@ -41,8 +43,7 @@ func _ready() -> void:
 	load_beat_map("res://Aset/beats.json")
 	print("Data Beat Map siap! Jumlah note: ", beat_map.size())
 	
-	
-		# Start our countdown in the negatives (e.g., -2.0 seconds)
+	# Start our countdown in the negatives (e.g., -2.0 seconds)
 	intro_time = -spawn_lead_time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -93,6 +94,10 @@ func spawn_tile(data: Dictionary):
 
 # Accurate song time
 func get_song_time() -> float:
+	# Fallback handling to ensure safe timing evaluations during the negative countdown phase
+	if not music_started:
+		return current_game_time
+		
 	return music_player.get_playback_position() \
 	+ AudioServer.get_time_since_last_mix() \
 	- AudioServer.get_output_latency() \
@@ -101,15 +106,24 @@ func get_song_time() -> float:
 # Input checker
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and !event.echo:
+		var target_lane: int = -1
+		
 		match event.keycode:
-			KEY_A:
-				check_hit(0)
-			KEY_S:
-				check_hit(1)
-			KEY_D:
-				check_hit(2)
-			KEY_F:
-				check_hit(3)
+			KEY_A: target_lane = 0
+			KEY_S: target_lane = 1
+			KEY_D: target_lane = 2
+			KEY_F: target_lane = 3
+			
+		# =====================================================================
+		# INTEGRATION: PROCESS DASH MOVEMENT AND HIT VERIFICATION
+		# =====================================================================
+		if target_lane != -1:
+			# 1. Instantly trigger the player character animation dash to lane
+			if player_character and player_character.has_method("jump_to_lane"):
+				player_character.jump_to_lane(target_lane)
+				
+			# 2. Fire your standard note score scoring checker system
+			check_hit(target_lane)
 
 # HIT DETECTION
 func check_hit(lane: int):

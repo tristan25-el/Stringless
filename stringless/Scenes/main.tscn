@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cwoi4anvk400c" path="res://Scenes/background.gd" id="4_21xkr"]
 [ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://633ar1cynach" path="res://Scenes/label.gd" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://bjro205cashd3" path="res://Scenes/player.tscn" id="8_344ge"]
 
 [node name="Main" type="Node2D" unique_id=1947135311]
 script = ExtResource("1_bo1nx")
@@ -39,3 +40,5 @@ offset_bottom = 61.0
 text = "Combo :"
 horizontal_alignment = 1
 script = ExtResource("5_kry3j")
+
+[node name="Player" parent="." unique_id=1287569934 instance=ExtResource("8_344ge")]

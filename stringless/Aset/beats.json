@@ -34,6 +34,11 @@
 		"lane": 1,
 		"time": 2.44
 	},
+		{
+		"is_impostor": true,
+		"lane": 1,
+		"time": 2.55
+	},
 	{
 		"is_impostor": false,
 		"lane": 2,
