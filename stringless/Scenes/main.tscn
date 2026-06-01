@@ -24,6 +24,12 @@ scale = Vector2(0.656, 1)
 texture = ExtResource("3_kry3j")
 script = ExtResource("4_21xkr")
 
+[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=109378714]
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("3_kry3j")
+expand_mode = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1298069848]
 stream = ExtResource("4_jjvhh")
 
