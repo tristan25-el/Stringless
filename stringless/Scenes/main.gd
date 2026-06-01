@@ -4,14 +4,19 @@ extends Node2D
 @export var tile_scene: PackedScene 
 @onready var music_player: AudioStreamPlayer = $AudioStreamPlayer 
 @export var global_offset := 0.0
-
+@onready var judge_feedback = $CanvasLayer/JudgeFeedback
 @onready var player_character = $Player
 var current_game_time: float = 0.0
+var original_judge_position
 
 var current_note_index: int = 0 # Tracks which note is next in line to spawn
 var spawn_lead_time: float = 2.0 # How many seconds BEFORE the hit-time the tile should spawn
 var intro_time: float = 0.0
 var music_started: bool = false
+var perfect_texture = preload("res://UI/PERFECT.png")
+var good_texture = preload("res://UI/GOOD.png")
+var bad_texture = preload("res://UI/BAD.png")
+var miss_texture = preload("res://UI/MISS.png")
 
 var beat_map: Array = []
 
@@ -20,6 +25,7 @@ var good_window := 0.25
 var miss_window := 0.40
 var score := 0
 var combo := 0
+var judge_tween: Tween
 
 func load_beat_map(file_path: String):
 	if FileAccess.file_exists(file_path):
@@ -42,9 +48,10 @@ func _ready() -> void:
 	# Panggil fungsi saat game dimulai
 	load_beat_map("res://Aset/beats.json")
 	print("Data Beat Map siap! Jumlah note: ", beat_map.size())
-	
+	judge_feedback.visible = false
 	# Start our countdown in the negatives (e.g., -2.0 seconds)
 	intro_time = -spawn_lead_time
+	original_judge_position = judge_feedback.position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -142,7 +149,7 @@ func check_hit(lane: int):
 			if diff < closest_diff:
 				closest_diff = diff
 				closest_note = child
-
+				
 	if closest_note == null:
 		print("MISS")
 		combo = 0
@@ -150,17 +157,17 @@ func check_hit(lane: int):
 
 	# JUDGEMENT
 	if closest_diff <= perfect_window:
-		print("PERFECT")
+		show_judgement(perfect_texture)
 		score += 300
 		combo += 1
 		closest_note.hit()
 	elif closest_diff <= good_window:
-		print("GOOD")
+		show_judgement(good_texture)
 		score += 100
 		combo += 1
 		closest_note.hit()
 	elif closest_diff <= miss_window:
-		print("BAD")
+		show_judgement(bad_texture)
 		score += 50
 		combo = 0
 		closest_note.hit()
@@ -169,9 +176,39 @@ func check_hit(lane: int):
 		
 	print("Score: ", score)
 	print("Combo: ", combo)
-
+	
+func show_judgement(texture):
+	judge_feedback.texture = texture
+	if texture != perfect_texture:
+		judge_feedback.custom_minimum_size = Vector2(400,400)
+	judge_feedback.visible = true
+	if judge_tween:
+		judge_tween.kill()
+	judge_feedback.modulate.a = 0.5 #Ini ngatur Opacity
+	judge_tween = create_tween()
+	# POP hanya selain MISS
+	if texture != miss_texture:
+		judge_feedback.scale = Vector2(0.95, 0.95)
+		judge_tween.parallel().tween_property(
+			judge_feedback,
+			"scale",
+			Vector2(1.0, 1.0),
+			0.12
+		)
+	else:
+		judge_feedback.scale = Vector2(1.0, 1.0)
+	judge_tween.tween_interval(0.25)
+	judge_tween.tween_property(
+		judge_feedback,
+		"modulate:a",
+		0.0,
+		0.15
+	)
+	await judge_tween.finished
+	judge_feedback.visible = false
+	
 # AUTO MISS
 func register_miss():
 	if combo > 0:
 		combo = 0
-	print("MISS")
+	show_judgement(miss_texture)
