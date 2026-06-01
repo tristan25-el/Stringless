@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Stringless"
-run/main_scene="uid://ch6uoxhc7j5et"
+run/main_scene="uid://cexyjvdbm3k7a"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://cg1m1xbwamqmw"
 
 [display]
 
