@@ -53,7 +53,7 @@ func _ready() -> void:
 	judge_feedback.visible = false
 	# Start our countdown in the negatives (e.g., -2.0 seconds)
 	intro_time = -spawn_lead_time
-	original_judge_position = judge_feedback.position
+	# FIX: Removed the stale position capture from here because UI container anchor coordinates are not yet fully resolved
 	jumpscare.pivot_offset = jumpscare.size / 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -124,9 +124,8 @@ func _input(event: InputEvent) -> void:
 			KEY_D: target_lane = 2
 			KEY_F: target_lane = 3
 			
-		# =====================================================================
+		
 		# INTEGRATION: PROCESS DASH MOVEMENT AND HIT VERIFICATION
-		# =====================================================================
 		if target_lane != -1:
 			# 1. Instantly trigger the player character animation dash to lane
 			if player_character and player_character.has_method("jump_to_lane"):
@@ -158,6 +157,12 @@ func check_hit(lane: int):
 		combo = 0
 		return
 
+	# FIX: Intercept impostor note hit to break combo, trigger jumpscare, and stop regular scoring
+	if "is_impostor" in closest_note and closest_note.is_impostor:
+		combo = 0
+		closest_note.hit()
+		return
+
 	# JUDGEMENT
 	if closest_diff <= perfect_window:
 		show_judgement(perfect_texture)
@@ -185,21 +190,36 @@ func show_judgement(texture):
 	if texture != perfect_texture:
 		judge_feedback.custom_minimum_size = Vector2(400,400)
 	judge_feedback.visible = true
+	
+	# FIX: Dynamically capture the exact finalized, engine-centered anchor position on the first note hit
+	if original_judge_position == null:
+		original_judge_position = judge_feedback.position
+		
 	if judge_tween:
 		judge_tween.kill()
+		
+	judge_feedback.position = original_judge_position
 	judge_feedback.modulate.a = 0.5 #Ini ngatur Opacity
 	judge_tween = create_tween()
 	# POP hanya selain MISS
 	if texture != miss_texture:
-		judge_feedback.scale = Vector2(0.95, 0.95)
+		judge_feedback.scale = Vector2(0.7, 0.7)
 		judge_tween.parallel().tween_property(
 			judge_feedback,
 			"scale",
 			Vector2(1.0, 1.0),
-			0.12
-		)
+			0.06
+		).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		judge_tween.parallel().tween_property(judge_feedback, "position:x", original_judge_position.x - 25.0, 0.03)
 	else:
 		judge_feedback.scale = Vector2(1.0, 1.0)
+		judge_tween.tween_property(judge_feedback, "position:x", original_judge_position.x - 25.0, 0.03)
+		
+	judge_tween.chain().tween_property(judge_feedback, "position:x", original_judge_position.x + 25.0, 0.03)
+	judge_tween.tween_property(judge_feedback, "position:x", original_judge_position.x - 15.0, 0.03)
+	judge_tween.tween_property(judge_feedback, "position:x", original_judge_position.x + 15.0, 0.03)
+	judge_tween.tween_property(judge_feedback, "position:x", original_judge_position.x, 0.03)
+	
 	judge_tween.tween_interval(0.25)
 	judge_tween.tween_property(
 		judge_feedback,

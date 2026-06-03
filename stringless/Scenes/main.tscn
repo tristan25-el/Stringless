@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://d2wrvqqaeysxy" path="res://Aset/Background 2.png" id="3_kry3j"]
 [ext_resource type="Script" uid="uid://cwoi4anvk400c" path="res://Scenes/background.gd" id="4_21xkr"]
 [ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="4_jjvhh"]
-[ext_resource type="Script" path="res://Scenes/label.gd" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bjro205cashd3" path="res://Scenes/player.tscn" id="8_344ge"]
 [ext_resource type="Texture2D" uid="uid://ci2jxlt11vrvb" path="res://Aset/Manekin jumpscare Ver.3.png" id="9_ynf5e"]
 
@@ -25,12 +24,6 @@ scale = Vector2(0.656, 1)
 texture = ExtResource("3_kry3j")
 script = ExtResource("4_21xkr")
 
-[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=109378714]
-offset_right = 1080.0
-offset_bottom = 1920.0
-texture = ExtResource("3_kry3j")
-expand_mode = 1
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1298069848]
 stream = ExtResource("4_jjvhh")
 
@@ -40,13 +33,6 @@ offset_right = 1080.0
 offset_bottom = 1361.51
 scale = Vector2(1, -1.493)
 color = Color(0.26666668, 0.047058824, 0.047058824, 1)
-
-[node name="ComboCounter" type="Label" parent="." unique_id=1557032852]
-offset_right = 239.0
-offset_bottom = 61.0
-text = "Combo :"
-horizontal_alignment = 1
-script = ExtResource("5_kry3j")
 
 [node name="Player" parent="." unique_id=1287569934 instance=ExtResource("8_344ge")]
 

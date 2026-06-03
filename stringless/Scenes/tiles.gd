@@ -41,7 +41,8 @@ func _process(delta: float) -> void:
 		
 		if progress >= 1.15 and !already_hit:
 			already_hit = true
-			main_node.register_miss()
+			if not is_impostor:
+				main_node.register_miss()
 			queue_free()
 
 # UNIFIED PERSPECTIVE POSITIONING
