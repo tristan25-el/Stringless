@@ -6,6 +6,8 @@ extends Node2D
 @export var global_offset := 0.0
 @onready var judge_feedback = $CanvasLayer/JudgeFeedback
 @onready var player_character = $Player
+@onready var jumpscare = $CanvasLayer/Jumpscare
+const JUMPSCARE_TEXTURE = preload("res://Aset/Manekin jumpscare Ver.3.png")
 var current_game_time: float = 0.0
 var original_judge_position
 
@@ -20,7 +22,7 @@ var miss_texture = preload("res://UI/MISS.png")
 
 var beat_map: Array = []
 
-var perfect_window := 0.10
+var perfect_window := 0.15
 var good_window := 0.25
 var miss_window := 0.40
 var score := 0
@@ -52,6 +54,7 @@ func _ready() -> void:
 	# Start our countdown in the negatives (e.g., -2.0 seconds)
 	intro_time = -spawn_lead_time
 	original_judge_position = judge_feedback.position
+	jumpscare.pivot_offset = jumpscare.size / 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -212,3 +215,34 @@ func register_miss():
 	if combo > 0:
 		combo = 0
 	show_judgement(miss_texture)
+	
+func show_jumpscare(world_pos: Vector2):
+	jumpscare.texture = JUMPSCARE_TEXTURE
+	jumpscare.visible = true
+	jumpscare.position = world_pos
+	jumpscare.scale = Vector2(0.2, 0.2)
+	jumpscare.modulate.a = 0.7 #opacitynya
+	var tween = create_tween()
+	tween.parallel().tween_property(
+		jumpscare,
+		"scale",
+		Vector2(15.0, 15.0), #besaran ngezoomnya
+		0.2 #kecepatan zoom.
+	)
+	tween.parallel().tween_property(
+		jumpscare,
+		"position",
+		Vector2(
+			540,
+			960
+		),
+		0.1 #kecepatan geser ke tengah.
+	)
+	tween.tween_property(
+		jumpscare,
+		"modulate:a",
+		0.0,
+		0.15 #kecepatan menghilang.
+	)
+	await tween.finished
+	jumpscare.visible = false

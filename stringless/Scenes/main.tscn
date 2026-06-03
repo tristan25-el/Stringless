@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="4_jjvhh"]
 [ext_resource type="Script" path="res://Scenes/label.gd" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bjro205cashd3" path="res://Scenes/player.tscn" id="8_344ge"]
+[ext_resource type="Texture2D" uid="uid://ci2jxlt11vrvb" path="res://Aset/Manekin jumpscare Ver.3.png" id="9_ynf5e"]
 
 [node name="Main" type="Node2D" unique_id=1947135311]
 script = ExtResource("1_bo1nx")
@@ -63,3 +64,9 @@ offset_right = 20.0
 offset_bottom = -730.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Jumpscare" type="TextureRect" parent="CanvasLayer" unique_id=2017037329]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_ynf5e")

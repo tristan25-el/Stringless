@@ -1,5 +1,9 @@
 extends Node2D
+@onready var sprite = $Sprite2D
+@export var normal_texture : Texture2D
+@export var impostor_texture : Texture2D
 
+var is_impostor := false
 var lane: int = 0
 var hit_time: float = 0.0
 var already_hit := false
@@ -18,9 +22,11 @@ func initialize(data: Dictionary, lead_time: float):
 	lane = data.get("lane", 0)
 	hit_time = data.get("time", 0.0)
 	initial_lead_time = lead_time		
-
+	is_impostor = data.get("is_impostor", false)
 	if data.get("is_impostor", false):
-		modulate = Color.RED
+		sprite.texture = impostor_texture
+	else:
+		sprite.texture = normal_texture
 		
 	# Instantly calculate its initial position on the horizon line before the first frame draws
 	update_perspective()
@@ -75,8 +81,8 @@ func update_perspective() -> void:
 	position.x = lerp(spawn_x, final_x, visual_progress)
 	
 	# Perspective Scaling
-	var min_scale = 0.05
-	var max_scale = 0.60
+	var min_scale = 0.5
+	var max_scale = 2.8
 	var current_scale = lerp(min_scale, max_scale, visual_progress)
 	scale = Vector2(current_scale, current_scale)
 	
@@ -86,6 +92,9 @@ func hit():
 	if already_hit:
 		return
 	already_hit = true
+	if is_impostor:
+		get_parent().show_jumpscare(global_position)
+
 	queue_free()
 	
 func can_be_hit(current_time: float) -> bool:
