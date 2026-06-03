@@ -3,15 +3,33 @@
 [ext_resource type="Script" uid="uid://c8wuyfewcpm33" path="res://Scenes/player.gd" id="1_vgqql"]
 [ext_resource type="Texture2D" uid="uid://bpu84lirneni4" path="res://Aset/Lari ke kiri.png" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://biq66c26rk4eh" path="res://Aset/Lari ke kanan.png" id="3_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://cpc1l1cqpggjs" path="res://Aset/Char_Lari lurus 1.png" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://mw2ublvxad4u" path="res://Aset/Char_Lari lurus 2.png" id="5_x3wgy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8erm5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}],
+"loop": true,
+"name": &"dash_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_x3wgy")
+}],
+"loop": true,
+"name": &"dash_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fkybt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_fkybt")
+"texture": ExtResource("5_x3wgy")
 }],
 "loop": true,
 "name": &"idle",
@@ -24,4 +42,5 @@ script = ExtResource("1_vgqql")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1580465231]
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_8erm5")
-animation = &"idle"
+animation = &"dash_right"
+autoplay = "idle"
