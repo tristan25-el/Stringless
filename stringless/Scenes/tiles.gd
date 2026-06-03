@@ -87,6 +87,11 @@ func update_perspective() -> void:
 	var current_scale = lerp(min_scale, max_scale, visual_progress)
 	scale = Vector2(current_scale, current_scale)
 	
+	if sprite:
+		sprite.centered = true
+		sprite.offset = Vector2(0, -sprite.texture.get_height() * 0.1)
+
+	
 	visible = true
 
 func hit():

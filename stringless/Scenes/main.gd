@@ -1,6 +1,6 @@
 extends Node2D
 
-# --- NEW VARIABLES ADDED HERE ---
+#NEW VARIABLES ADDED HERE
 @export var tile_scene: PackedScene 
 @onready var music_player: AudioStreamPlayer = $AudioStreamPlayer 
 @export var global_offset := 0.0
@@ -22,9 +22,9 @@ var miss_texture = preload("res://UI/MISS.png")
 
 var beat_map: Array = []
 
-var perfect_window := 0.15
-var good_window := 0.25
-var miss_window := 0.40
+var perfect_window := 0.05
+var good_window := 0.10
+var miss_window := 0.18
 var score := 0
 var combo := 0
 var judge_tween: Tween
@@ -157,7 +157,6 @@ func check_hit(lane: int):
 		combo = 0
 		return
 
-	# FIX: Intercept impostor note hit to break combo, trigger jumpscare, and stop regular scoring
 	if "is_impostor" in closest_note and closest_note.is_impostor:
 		combo = 0
 		closest_note.hit()
@@ -191,7 +190,6 @@ func show_judgement(texture):
 		judge_feedback.custom_minimum_size = Vector2(400,400)
 	judge_feedback.visible = true
 	
-	# FIX: Dynamically capture the exact finalized, engine-centered anchor position on the first note hit
 	if original_judge_position == null:
 		original_judge_position = judge_feedback.position
 		
