@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c521oe4tnb67u"
-path="res://.godot/imported/Manekin normal.png-bb02dff282defb7d156060244c9b9fdd.ctex"
+uid="uid://ck6gwe2tn274k"
+path="res://.godot/imported/main menu8.png-219f436b75129c2d2bb57750b0127ada.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aset/Manekin normal.png"
-dest_files=["res://.godot/imported/Manekin normal.png-bb02dff282defb7d156060244c9b9fdd.ctex"]
+source_file="res://Aset/Main Menu/main menu8.png"
+dest_files=["res://.godot/imported/main menu8.png-219f436b75129c2d2bb57750b0127ada.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpu84lirneni4"
-path="res://.godot/imported/Lari ke kiri.png-d0a98a67d5dfb50f40034989f8125874.ctex"
+uid="uid://c521oe4tnb67u"
+path="res://.godot/imported/Manekin normal.png-b9052a941f7c0bd6102a7f0157710c6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aset/Lari ke kiri.png"
-dest_files=["res://.godot/imported/Lari ke kiri.png-d0a98a67d5dfb50f40034989f8125874.ctex"]
+source_file="res://Aset/Gameplay/Manekin normal.png"
+dest_files=["res://.godot/imported/Manekin normal.png-b9052a941f7c0bd6102a7f0157710c6f.ctex"]
 
 [params]
 

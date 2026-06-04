@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by6jt7nf2emsp"
-path="res://.godot/imported/TILES.png-896f6855349c5cf5da27b7ad3b5d161e.ctex"
+uid="uid://bpu84lirneni4"
+path="res://.godot/imported/Lari ke kiri.png-5048588379ff0e0f46641e18d5c12ae7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aset/TILES.png"
-dest_files=["res://.godot/imported/TILES.png-896f6855349c5cf5da27b7ad3b5d161e.ctex"]
+source_file="res://Aset/Player/Lari ke kiri.png"
+dest_files=["res://.godot/imported/Lari ke kiri.png-5048588379ff0e0f46641e18d5c12ae7.ctex"]
 
 [params]
 

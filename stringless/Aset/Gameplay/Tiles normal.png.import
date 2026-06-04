@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mw2ublvxad4u"
-path="res://.godot/imported/Char_Lari lurus 2.png-00a13568c60b01e36531292b239be574.ctex"
+uid="uid://d0x4a1pjnivi2"
+path="res://.godot/imported/Tiles normal.png-1d6964eb7e81cf2defb6faa1fe768807.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aset/Char_Lari lurus 2.png"
-dest_files=["res://.godot/imported/Char_Lari lurus 2.png-00a13568c60b01e36531292b239be574.ctex"]
+source_file="res://Aset/Gameplay/Tiles normal.png"
+dest_files=["res://.godot/imported/Tiles normal.png-1d6964eb7e81cf2defb6faa1fe768807.ctex"]
 
 [params]
 

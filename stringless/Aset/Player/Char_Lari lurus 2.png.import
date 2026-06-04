@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck6gwe2tn274k"
-path="res://.godot/imported/main menu8.png-0ce8cbe9bfd702b0208e14b885c4d2bc.ctex"
+uid="uid://mw2ublvxad4u"
+path="res://.godot/imported/Char_Lari lurus 2.png-9de2bc71e9edc4d747d0d624e455d531.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aset/main menu8.png"
-dest_files=["res://.godot/imported/main menu8.png-0ce8cbe9bfd702b0208e14b885c4d2bc.ctex"]
+source_file="res://Aset/Player/Char_Lari lurus 2.png"
+dest_files=["res://.godot/imported/Char_Lari lurus 2.png-9de2bc71e9edc4d747d0d624e455d531.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biq66c26rk4eh"
-path="res://.godot/imported/Lari ke kanan.png-39ace3e49ac4f330dd5b2d20955eac3c.ctex"
+uid="uid://b3ejlr64o18aa"
+path="res://.godot/imported/main menu5.png-5e232a7fd2efaf55317d893e1444ede3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aset/Lari ke kanan.png"
-dest_files=["res://.godot/imported/Lari ke kanan.png-39ace3e49ac4f330dd5b2d20955eac3c.ctex"]
+source_file="res://Aset/Main Menu/main menu5.png"
+dest_files=["res://.godot/imported/main menu5.png-5e232a7fd2efaf55317d893e1444ede3.ctex"]
 
 [params]
 

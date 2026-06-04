@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkjlqj3oxmxm8"
-path="res://.godot/imported/Tiles Impostor.png-fc0e3477487c4068bc8bba9ed638d09c.ctex"
+uid="uid://mnrn2s2x7mhl"
+path="res://.godot/imported/main menu6.png-5600e0f72471ddde0fb153ab3cc522f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aset/Tiles Impostor.png"
-dest_files=["res://.godot/imported/Tiles Impostor.png-fc0e3477487c4068bc8bba9ed638d09c.ctex"]
+source_file="res://Aset/Main Menu/main menu6.png"
+dest_files=["res://.godot/imported/main menu6.png-5600e0f72471ddde0fb153ab3cc522f5.ctex"]
 
 [params]
 

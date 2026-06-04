@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci2jxlt11vrvb"
-path="res://.godot/imported/Manekin jumpscare Ver.3.png-2c331757385fdf7bf7a131bf9869d336.ctex"
+uid="uid://cpc1l1cqpggjs"
+path="res://.godot/imported/Char_Lari lurus 1.png-062085f45004e4395394e8fa1c6a4dca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aset/Manekin jumpscare Ver.3.png"
-dest_files=["res://.godot/imported/Manekin jumpscare Ver.3.png-2c331757385fdf7bf7a131bf9869d336.ctex"]
+source_file="res://Aset/Player/Char_Lari lurus 1.png"
+dest_files=["res://.godot/imported/Char_Lari lurus 1.png-062085f45004e4395394e8fa1c6a4dca.ctex"]
 
 [params]
 

@@ -7,7 +7,7 @@ extends Node2D
 @onready var judge_feedback = $CanvasLayer/JudgeFeedback
 @onready var player_character = $Player
 @onready var jumpscare = $CanvasLayer/Jumpscare
-const JUMPSCARE_TEXTURE = preload("res://Aset/Manekin jumpscare Ver.3.png")
+const JUMPSCARE_TEXTURE = preload("res://Aset/Gameplay/Manekin jumpscare Ver.3.png")
 var current_game_time: float = 0.0
 var original_judge_position
 
@@ -48,7 +48,7 @@ func load_beat_map(file_path: String):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Panggil fungsi saat game dimulai
-	load_beat_map("res://Aset/beats.json")
+	load_beat_map("res://Aset/Gameplay/beats.json")
 	print("Data Beat Map siap! Jumlah note: ", beat_map.size())
 	judge_feedback.visible = false
 	# Start our countdown in the negatives (e.g., -2.0 seconds)
