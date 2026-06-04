@@ -42,5 +42,5 @@ script = ExtResource("1_vgqql")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1580465231]
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_8erm5")
-animation = &"dash_right"
+animation = &"idle"
 autoplay = "idle"

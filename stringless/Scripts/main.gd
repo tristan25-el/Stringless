@@ -7,6 +7,15 @@ extends Node2D
 @onready var judge_feedback = $CanvasLayer/JudgeFeedback
 @onready var player_character = $Player
 @onready var jumpscare = $CanvasLayer/Jumpscare
+@onready var string_label = $CanvasLayer/StringLabel
+@onready var combo_label = $CanvasLayer/ComboLabel
+@onready var hearts = [
+	$CanvasLayer/HeartsContainer/Heart1,
+	$CanvasLayer/HeartsContainer/Heart2,
+	$CanvasLayer/HeartsContainer/Heart3
+]
+@onready var game_over_panel = $CanvasLayer/GameOverPanel
+@onready var monster = $Monster
 const JUMPSCARE_TEXTURE = preload("res://Aset/Gameplay/Manekin jumpscare Ver.3.png")
 var current_game_time: float = 0.0
 var original_judge_position
@@ -30,13 +39,10 @@ var combo := 0
 var judge_tween: Tween
 var max_health := 3
 var current_health := 3
+var current_strings := 1
 var full_heart = preload("res://UI/heart full.png")
 var empty_heart = preload("res://UI/heart emptyl.png")
-@onready var hearts = [
-	$CanvasLayer/HeartsContainer/Heart1,
-	$CanvasLayer/HeartsContainer/Heart2,
-	$CanvasLayer/HeartsContainer/Heart3
-]
+var is_game_over := false
 
 func load_beat_map(file_path: String):
 	if FileAccess.file_exists(file_path):
@@ -65,6 +71,9 @@ func _ready() -> void:
 	# FIX: Removed the stale position capture from here because UI container anchor coordinates are not yet fully resolved
 	jumpscare.pivot_offset = jumpscare.size / 2
 	update_hearts()
+	update_strings()
+	combo_label.pivot_offset = combo_label.size / 2
+	game_over_panel.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -179,16 +188,22 @@ func check_hit(lane: int):
 		score += 300
 		combo += 1
 		closest_note.hit()
+		add_string()
+		update_combo()
 	elif closest_diff <= good_window:
 		show_judgement(good_texture)
 		score += 100
 		combo += 1
 		closest_note.hit()
+		add_string()
+		update_combo()
 	elif closest_diff <= miss_window:
 		show_judgement(bad_texture)
 		score += 50
 		combo = 0
 		closest_note.hit()
+		add_string()
+		update_combo()
 	else:
 		register_miss()
 		
@@ -243,6 +258,11 @@ func show_judgement(texture):
 func register_miss():
 	if combo > 0:
 		combo = 0
+	current_strings -= 1
+	update_strings()
+	update_combo()
+	if current_strings <= 0:
+		game_over()
 	show_judgement(miss_texture)
 	
 func show_jumpscare(world_pos: Vector2):
@@ -286,3 +306,36 @@ func damage_player(amount: int):
 	current_health -= amount
 	current_health = max(current_health, 0)
 	update_hearts()
+	if current_health <= 0:
+		game_over()
+		
+func game_over():
+	if is_game_over:
+		return
+	is_game_over = true
+	music_player.stop()
+	set_process(false)
+	game_over_panel.visible = true
+	get_tree().paused = true
+
+func update_strings():
+	string_label.text = "STRINGS : " + str(current_strings)
+	
+func update_combo():
+	if combo <= 0:
+		combo_label.visible = false
+	else:
+		combo_label.visible = true
+		combo_label.text = "COMBO : " + str(combo)
+		combo_label.scale = Vector2(1.1, 1.1)
+		var tween = create_tween()
+		tween.tween_property(
+			combo_label,
+			"scale",
+			Vector2(1.0, 1.0),
+			0.1
+		)
+	
+func add_string(amount := 1):
+	current_strings += amount
+	update_strings()

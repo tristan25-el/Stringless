@@ -25,9 +25,11 @@ func _on_mouse_exited():
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.67)
 
 func _on_pressed():
-	if id == "start":
-		GameManager.start_game()
-	elif id == "exit":
-		get_tree().quit()
-	else:
-		printerr("ID NOT FOUND!")
+	match id:
+		"start":
+			GameManager.start_game()
+		"exit":
+			get_tree().quit()
+		"restart":
+			get_tree().paused = false
+			get_tree().reload_current_scene()

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cdjot5oaq2ejx"]
+
+[ext_resource type="Texture2D" uid="uid://g6odkkq58fgr" path="res://Aset/Gameplay/Monster string 1.png" id="2_vr0w3"]
+[ext_resource type="Texture2D" uid="uid://dj3wr12vvo0ck" path="res://Aset/Gameplay/Monster string 2.png" id="3_6tndq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ngjm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vr0w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6tndq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[node name="Monster" type="Node2D" unique_id=612985685]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=839956235]
+sprite_frames = SubResource("SpriteFrames_8ngjm")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.43769565

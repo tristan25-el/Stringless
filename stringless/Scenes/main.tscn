@@ -7,7 +7,24 @@
 [ext_resource type="Script" uid="uid://cwoi4anvk400c" path="res://Scripts/background.gd" id="4_21xkr"]
 [ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://bjro205cashd3" path="res://Scenes/player.tscn" id="8_344ge"]
+[ext_resource type="Script" uid="uid://cppe88phpvvrn" path="res://Scripts/monster.gd" id="8_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://30vn2di787xl" path="res://UI/game over1.png" id="9_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://ci2jxlt11vrvb" path="res://Aset/Gameplay/Manekin jumpscare Ver.3.png" id="9_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://bf3r6cvupb8jq" path="res://UI/button.png" id="10_jkdf5"]
+[ext_resource type="Script" uid="uid://cv0qfvhvp0bkx" path="res://Scripts/button.gd" id="11_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://cff8404bcg7f2" path="res://UI/Restart.png" id="12_k12tt"]
+[ext_resource type="Texture2D" uid="uid://ytcus6g51kxa" path="res://UI/Quit.png" id="13_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://cdjot5oaq2ejx" path="res://Scenes/monster.tscn" id="14_jkdf5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_344ge"]
+font_size = 40
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(1, 1)
+stacked_shadow_0/color = Color(0.26666668, 0.047058824, 0.047058824, 1)
+stacked_shadow_0/outline_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_ynf5e"]
+font_size = 45
 
 [node name="Main" type="Node2D" unique_id=1947135311]
 script = ExtResource("1_bo1nx")
@@ -33,6 +50,9 @@ offset_right = 1080.0
 offset_bottom = 1361.51
 scale = Vector2(1, -1.493)
 color = Color(0.26666668, 0.047058824, 0.047058824, 1)
+
+[node name="Monster" parent="." unique_id=612985685 instance=ExtResource("14_jkdf5")]
+script = ExtResource("8_wsu2k")
 
 [node name="Player" parent="." unique_id=1287569934 instance=ExtResource("8_344ge")]
 
@@ -83,3 +103,120 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 expand_mode = 3
 stretch_mode = 5
+
+[node name="StringLabel" type="Label" parent="CanvasLayer" unique_id=993945152]
+offset_left = 50.0
+offset_top = 75.0
+offset_right = 90.0
+offset_bottom = 98.0
+label_settings = SubResource("LabelSettings_344ge")
+
+[node name="ComboLabel" type="Label" parent="CanvasLayer" unique_id=547574087]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 209.0
+offset_right = 20.0
+offset_bottom = 232.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_ynf5e")
+horizontal_alignment = 1
+
+[node name="GameOverPanel" type="Control" parent="CanvasLayer" unique_id=606182098]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DarkOverlay" type="ColorRect" parent="CanvasLayer/GameOverPanel" unique_id=1810359444]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7019608)
+
+[node name="GameOver" type="TextureRect" parent="CanvasLayer/GameOverPanel" unique_id=1582454878]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -668.0
+offset_right = 271.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_fdnlq")
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/GameOverPanel" unique_id=361658438]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -160.0
+offset_right = 200.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("10_jkdf5")
+script = ExtResource("11_wsu2k")
+id = "restart"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameOverPanel/RestartButton" unique_id=1388637538]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_k12tt")
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer/GameOverPanel" unique_id=390030483]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 134.0
+offset_right = 200.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("10_jkdf5")
+script = ExtResource("11_wsu2k")
+id = "exit"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameOverPanel/ExitButton" unique_id=1120472291]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -160.0
+offset_right = 200.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_h1bgf")
