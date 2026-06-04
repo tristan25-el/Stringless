@@ -28,6 +28,15 @@ var miss_window := 0.18
 var score := 0
 var combo := 0
 var judge_tween: Tween
+var max_health := 3
+var current_health := 3
+var full_heart = preload("res://UI/heart full.png")
+var empty_heart = preload("res://UI/heart emptyl.png")
+@onready var hearts = [
+	$CanvasLayer/HeartsContainer/Heart1,
+	$CanvasLayer/HeartsContainer/Heart2,
+	$CanvasLayer/HeartsContainer/Heart3
+]
 
 func load_beat_map(file_path: String):
 	if FileAccess.file_exists(file_path):
@@ -55,6 +64,7 @@ func _ready() -> void:
 	intro_time = -spawn_lead_time
 	# FIX: Removed the stale position capture from here because UI container anchor coordinates are not yet fully resolved
 	jumpscare.pivot_offset = jumpscare.size / 2
+	update_hearts()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -159,6 +169,7 @@ func check_hit(lane: int):
 
 	if "is_impostor" in closest_note and closest_note.is_impostor:
 		combo = 0
+		damage_player(1)
 		closest_note.hit()
 		return
 
@@ -264,3 +275,14 @@ func show_jumpscare(world_pos: Vector2):
 	)
 	await tween.finished
 	jumpscare.visible = false
+	
+func update_hearts():
+	for i in range(max_health):
+		if i < current_health:
+			hearts[i].texture = full_heart
+		else:
+			hearts[i].texture = empty_heart
+func damage_player(amount: int):
+	current_health -= amount
+	current_health = max(current_health, 0)
+	update_hearts()

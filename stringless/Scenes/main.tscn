@@ -56,3 +56,30 @@ visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("9_ynf5e")
+
+[node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1023595990]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -392.0
+offset_top = 52.0
+offset_bottom = 180.0
+grow_horizontal = 0
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=976596366]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=264498485]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=535747654]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
