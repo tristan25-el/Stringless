@@ -481,9 +481,13 @@ func start_actual_game():
 
 # Fungsi ini akan otomatis dipanggil Godot saat lagu selesai
 func _on_music_finished():
-	# Beri jeda sedikit untuk memastikan tile terakhir sudah tersentuh
-	while get_tree().get_nodes_in_group("notes").size() > 0:
-		await get_tree().create_timer(0.5).timeout
+	# Langsung hapus semua tile/rintangan yang tersisa di layar
+	var remaining_notes = get_tree().get_nodes_in_group("notes")
+	for note in remaining_notes:
+		note.queue_free()
+		
+	# Beri jeda sangat singkat agar transisi mulus
+	await get_tree().create_timer(0.5).timeout
 		
 	# Cek apakah nyawa pemain masih ada (Berarti Menang)
 	if current_health > 0 and current_strings > 0 and not is_game_over:
@@ -494,7 +498,11 @@ func _on_music_finished():
 
 func show_win_screen():
 	storyboard_panel.visible = false
-	print("GAME COMPLETELY FINISHED!")
-	# Untuk saat ini kita tampilkan panel game over
-	game_over_panel.visible = true
-	get_tree().paused = true
+	print("GAME COMPLETELY FINISHED! Kembali ke menu utama...")
+	
+	# Pastikan game tidak dalam keadaan ter-pause
+	get_tree().paused = false 
+	
+	# Pindah scene menggunakan path yang Anda copy tadi
+	# (Timpa teks hijau di bawah ini dengan hasil Paste / Ctrl+V Anda)
+	get_tree().change_scene_to_file("res://Scenes/tile_screen.tscn")
