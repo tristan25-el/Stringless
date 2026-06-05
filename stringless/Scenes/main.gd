@@ -7,18 +7,8 @@ extends Node2D
 @onready var judge_feedback = $CanvasLayer/JudgeFeedback
 @onready var player_character = $Player
 @onready var jumpscare = $CanvasLayer/Jumpscare
-@onready var string_label = $CanvasLayer/StringLabel
-@onready var combo_label = $CanvasLayer/ComboLabel
-@onready var hearts = [
-	$CanvasLayer/HeartsContainer/Heart1,
-	$CanvasLayer/HeartsContainer/Heart2,
-	$CanvasLayer/HeartsContainer/Heart3
-]
-@onready var game_over_panel = $CanvasLayer/GameOverPanel
-@onready var monster = $Monster
 @export var decoration_scene: PackedScene
 @export var decor_textures: Array[Texture2D]
-@export var decor_spawn_lanes: Array[float] = [-250.0, 250.0]
 const JUMPSCARE_TEXTURE = preload("res://Aset/Gameplay/Manekin jumpscare Ver.3.png")
 var current_game_time: float = 0.0
 var original_judge_position
@@ -40,12 +30,6 @@ var miss_window := 0.18
 var score := 0
 var combo := 0
 var judge_tween: Tween
-var max_health := 3
-var current_health := 3
-var current_strings := 100
-var full_heart = preload("res://UI/heart full.png")
-var empty_heart = preload("res://UI/heart emptyl.png")
-var is_game_over := false
 
 var decor_timer: float = 0.0
 var time_between_decor: float = 2.0 # Rak baju baru muncul tiap 2 detik
@@ -69,17 +53,13 @@ func load_beat_map(file_path: String):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Panggil fungsi saat game dimulai
-	load_beat_map("res://Aset/Gameplay/beats.json")
+	load_beat_map("res://Aset/beats.json")
 	print("Data Beat Map siap! Jumlah note: ", beat_map.size())
 	judge_feedback.visible = false
 	# Start our countdown in the negatives (e.g., -2.0 seconds)
 	intro_time = -spawn_lead_time
 	# FIX: Removed the stale position capture from here because UI container anchor coordinates are not yet fully resolved
 	jumpscare.pivot_offset = jumpscare.size / 2
-	update_hearts()
-	update_strings()
-	combo_label.pivot_offset = combo_label.size / 2
-	game_over_panel.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -100,14 +80,15 @@ func _process(delta: float) -> void:
 		if not music_player.playing:
 			return
 		current_game_time = get_song_time() # Track song position here
-	
+
+	# --- BACKGROUND DECORATION SPAWNER ---
 	if music_started and music_player.playing:
 		decor_timer -= delta
 		if decor_timer <= 0.0:
 			spawn_random_decoration()
 			# Atur ulang waktu agar muncul secara acak antara 1.5 s/d 3.5 detik
 			decor_timer = randf_range(1.5, 3.5)
-	
+			
 	# SPAWNING LOOP (uses current_game_time)
 	while current_note_index < beat_map.size():
 		var note_data = beat_map[current_note_index]
@@ -191,7 +172,6 @@ func check_hit(lane: int):
 
 	if "is_impostor" in closest_note and closest_note.is_impostor:
 		combo = 0
-		damage_player(1)
 		closest_note.hit()
 		return
 
@@ -201,22 +181,16 @@ func check_hit(lane: int):
 		score += 300
 		combo += 1
 		closest_note.hit()
-		add_string()
-		update_combo()
 	elif closest_diff <= good_window:
 		show_judgement(good_texture)
 		score += 100
 		combo += 1
 		closest_note.hit()
-		add_string()
-		update_combo()
 	elif closest_diff <= miss_window:
 		show_judgement(bad_texture)
 		score += 50
 		combo = 0
 		closest_note.hit()
-		add_string()
-		update_combo()
 	else:
 		register_miss()
 		
@@ -271,11 +245,6 @@ func show_judgement(texture):
 func register_miss():
 	if combo > 0:
 		combo = 0
-	current_strings -= 1
-	update_strings()
-	update_combo()
-	if current_strings <= 0:
-		game_over()
 	show_judgement(miss_texture)
 	
 func show_jumpscare(world_pos: Vector2):
@@ -309,50 +278,6 @@ func show_jumpscare(world_pos: Vector2):
 	await tween.finished
 	jumpscare.visible = false
 	
-func update_hearts():
-	for i in range(max_health):
-		if i < current_health:
-			hearts[i].texture = full_heart
-		else:
-			hearts[i].texture = empty_heart
-func damage_player(amount: int):
-	current_health -= amount
-	current_health = max(current_health, 0)
-	update_hearts()
-	if current_health <= 0:
-		game_over()
-		
-func game_over():
-	if is_game_over:
-		return
-	is_game_over = true
-	music_player.stop()
-	set_process(false)
-	game_over_panel.visible = true
-	get_tree().paused = true
-
-func update_strings():
-	string_label.text = "STRINGS : " + str(current_strings)
-	
-func update_combo():
-	if combo <= 0:
-		combo_label.visible = false
-	else:
-		combo_label.visible = true
-		combo_label.text = "COMBO : " + str(combo)
-		combo_label.scale = Vector2(1.1, 1.1)
-		var tween = create_tween()
-		tween.tween_property(
-			combo_label,
-			"scale",
-			Vector2(1.0, 1.0),
-			0.1
-		)
-	
-func add_string(amount := 1):
-	current_strings += amount
-	update_strings()
-	
 func spawn_random_decoration():
 	if decoration_scene == null or decor_textures.is_empty():
 		return
@@ -360,16 +285,11 @@ func spawn_random_decoration():
 	var new_decor = decoration_scene.instantiate()
 	add_child(new_decor)
 	
-	# 1. Tetapkan Gambar
-	new_decor.texture = decor_textures.pick_random()
+	# Pilih 1 dari 3 gambar secara acak
+	var random_img = decor_textures.pick_random()
 	
-	# 2. Tentukan Jalur Bayangan (Kiri Luar = -0.7, Kanan Luar = 3.7)
-	# Anda bisa mengecilkan angka minusnya (misal -0.5) jika terlalu jauh dari garis
-	var lane_bayangan = -0.85 if randi() % 2 == 0 else 4.0
+	# Lempar koin: 50% kemungkinan di kiri (true), 50% di kanan (false)
+	var spawn_on_left = randf() > 0.5 
 	
-	# 3. Hitung Waktu Jatuh (Waktu saat ini + Lead Time)
-	var waktu_jatuh = current_game_time + spawn_lead_time
-	
-	# 4. Kirim data ke dekorasi agar dia menghitung garis miringnya sendiri!
-	if new_decor.has_method("initialize"):
-		new_decor.initialize(waktu_jatuh, spawn_lead_time, lane_bayangan)
+	# Jalankan animasi
+	new_decor.setup(spawn_on_left, random_img)
