@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dh1pk434dy3b6"]
+
+[ext_resource type="Script" uid="uid://dsao1yu4t2q57" path="res://Scripts/dekorasi.gd" id="1_xv1vu"]
+
+[node name="Dekorasi" type="Sprite2D" unique_id=1908118822]
+script = ExtResource("1_xv1vu")
