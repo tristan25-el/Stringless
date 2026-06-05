@@ -17,8 +17,14 @@ extends Node2D
 @onready var game_over_panel = $CanvasLayer/GameOverPanel
 @onready var monster = $Monster
 @export var decoration_scene: PackedScene
-@export var decor_textures: Array[Texture2D]
-@export var decor_spawn_lanes: Array[float] = [-250.0, 250.0]
+@export var decor_textures: Array[Texture2D] = []
+@export var decor_spawn_min := 0.8 # Minimum delay for a wall object to spawn
+@export var decor_spawn_max := 2.5 # Maximum delay for a wall object to spawn
+
+var decor_timer_left := 0.0
+var decor_timer_right := 0.0
+var next_spawn_left := 0.0
+var next_spawn_right := 0.0
 const JUMPSCARE_TEXTURE = preload("res://Aset/Gameplay/Manekin jumpscare Ver.3.png")
 var current_game_time: float = 0.0
 var original_judge_position
@@ -118,7 +124,44 @@ func _process(delta: float) -> void:
 			current_note_index += 1 
 		else:
 			break
+	decor_timer_left += delta
+	if decor_timer_left >= next_spawn_left:
+		decor_timer_left = 0.0
+		next_spawn_left = randf_range(decor_spawn_min, decor_spawn_max)
+		spawn_single_decor_node(current_game_time + spawn_lead_time, -0.85)
+
+	decor_timer_right += delta
+	if decor_timer_right >= next_spawn_right:
+		decor_timer_right = 0.0
+		next_spawn_right = randf_range(decor_spawn_min, decor_spawn_max)
+		spawn_single_decor_node(current_game_time + spawn_lead_time, 3.85)
 	
+func pre_populate_decorations():
+	var steps_left = randi_range(2, 4) 
+	for i in range(1, steps_left):
+		var target_progress = float(i) / float(steps_left)
+		var random_offset = randf_range(-0.3, 0.3)
+		var waktu_jatuh = intro_time + spawn_lead_time - (target_progress * spawn_lead_time) + random_offset
+		spawn_single_decor_node(waktu_jatuh, -0.85)
+
+	var steps_right = randi_range(2, 4) 
+	for i in range(1, steps_right):
+		var target_progress = float(i) / float(steps_right)
+		var random_offset = randf_range(-0.3, 0.3)
+		var waktu_jatuh = intro_time + spawn_lead_time - (target_progress * spawn_lead_time) + random_offset
+		spawn_single_decor_node(waktu_jatuh, 3.85)
+
+func spawn_single_decor_node(waktu_jatuh: float, lane_bayangan: float):
+	if decoration_scene == null or decor_textures.is_empty():
+		return
+		
+	var new_decor = decoration_scene.instantiate()
+	add_child(new_decor)
+	
+	new_decor.texture = decor_textures.pick_random()
+	
+	if new_decor.has_method("initialize"):
+		new_decor.initialize(waktu_jatuh, spawn_lead_time, lane_bayangan)
 
 # spawn tiles
 func spawn_tile(data: Dictionary):

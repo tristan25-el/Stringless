@@ -11,14 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://6ccog3mwhoou" path="res://Aset/Background/background asset 2.png" id="5_ee4r6"]
 [ext_resource type="Texture2D" uid="uid://bthosjbn336pk" path="res://Aset/Background/background asset 3.png" id="6_gt3je"]
 [ext_resource type="PackedScene" uid="uid://bjro205cashd3" path="res://Scenes/player.tscn" id="8_344ge"]
-[ext_resource type="Script" path="res://Scripts/monster.gd" id="8_wsu2k"]
+[ext_resource type="Script" uid="uid://cppe88phpvvrn" path="res://Scripts/monster.gd" id="8_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://30vn2di787xl" path="res://UI/game over1.png" id="9_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://ci2jxlt11vrvb" path="res://Aset/Gameplay/Manekin jumpscare Ver.3.png" id="9_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bf3r6cvupb8jq" path="res://UI/button.png" id="10_jkdf5"]
 [ext_resource type="Script" uid="uid://cv0qfvhvp0bkx" path="res://Scripts/button.gd" id="11_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://cff8404bcg7f2" path="res://UI/Restart.png" id="12_k12tt"]
 [ext_resource type="Texture2D" uid="uid://ytcus6g51kxa" path="res://UI/Quit.png" id="13_h1bgf"]
-[ext_resource type="PackedScene" path="res://Scenes/monster.tscn" id="14_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://cdjot5oaq2ejx" path="res://Scenes/monster.tscn" id="14_jkdf5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_344ge"]
 font_size = 40
