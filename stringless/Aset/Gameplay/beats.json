@@ -20,6 +20,11 @@
 		"time": 14.57
 	},
 	{
+		"is_impostor": true,
+		"lane": 2,
+		"time": 15.40
+	},
+	{
 		"is_impostor": false,
 		"lane": 0,
 		"time": 16.28
@@ -40,6 +45,11 @@
 		"time": 16.28
 	},
 	{
+		"is_impostor": true,
+		"lane": 0,
+		"time": 17.15
+	},
+	{
 		"is_impostor": false,
 		"lane": 0,
 		"time": 18.00
@@ -58,6 +68,11 @@
 		"is_impostor": false,
 		"lane": 3,
 		"time": 18.00
+	},
+	{
+		"is_impostor": true,
+		"lane": 3,
+		"time": 18.85
 	},
 	{
 		"is_impostor": false,
@@ -80,6 +95,11 @@
 		"time": 19.71
 	},
 	{
+		"is_impostor": true,
+		"lane": 1,
+		"time": 20.55
+	},
+	{
 		"is_impostor": false,
 		"lane": 0,
 		"time": 21.42
@@ -100,6 +120,11 @@
 		"time": 21.42
 	},
 	{
+		"is_impostor": true,
+		"lane": 2,
+		"time": 22.28
+	},
+	{
 		"is_impostor": false,
 		"lane": 0,
 		"time": 23.14
@@ -120,6 +145,11 @@
 		"time": 23.14
 	},
 	{
+		"is_impostor": true,
+		"lane": 0,
+		"time": 24.00
+	},
+	{
 		"is_impostor": false,
 		"lane": 0,
 		"time": 24.85
@@ -138,6 +168,11 @@
 		"is_impostor": false,
 		"lane": 3,
 		"time": 24.85
+	},
+	{
+		"is_impostor": true,
+		"lane": 3,
+		"time": 25.70
 	},
 	{
 		"is_impostor": false,
@@ -396,357 +431,712 @@
 	},
 	{
 		"is_impostor": false,
-		"lane": 2,
-		"time": 48.67
-	},
-	{
-		"is_impostor": false,
 		"lane": 1,
-		"time": 49.10
-	},
-	{
-		"is_impostor": false,
-		"lane": 0,
-		"time": 49.53
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 49.96
+		"time": 38.57
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 50.17
+		"time": 38.77
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 50.39
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 50.82
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 51.25
+		"time": 38.99
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 51.67
+		"time": 39.21
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 52.10
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 52.32
+		"time": 39.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 52.96
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 53.39
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 53.60
+		"time": 39.62
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 53.82
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 54.25
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 54.46
+		"time": 39.84
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 54.67
+		"time": 40.06
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 40.28
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 40.49
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 40.91
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 41.13
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 41.34
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 41.56
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 41.78
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 41.98
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 42.20
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 42.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 42.64
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 42.83
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 43.04
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 43.28
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 43.49
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 43.63
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 43.83
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 44.05
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 44.27
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 44.49
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 44.68
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 44.91
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 45.12
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 45.34
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 45.55
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 45.76
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 45.97
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 46.19
 	},
 		{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 55.10
+		"time": 46.41
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 55.53
+		"time": 46.62
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 55.96
+		"time": 46.84
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 56.39
+		"time": 47.04
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 56.82
+		"time": 47.26
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 57.03
+		"time": 47.48
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 57.25
+		"time": 47.70
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 57.67
+		"time": 47.90
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 58.10
+		"time": 48.10
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 58.53
+		"time": 48.34
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 58.96
+		"time": 48.55
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 59.17
+		"time": 48.80
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 59.82
+		"time": 49.00
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 60.25
+		"time": 49.22
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 60.46
+		"time": 49.44
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 60.67
+		"time": 49.66
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 61.10
+		"time": 49.85
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 61.32
+		"time": 50.08
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 61.53
+		"time": 50.29
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 62.39
+		"time": 50.51
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 62.82
+		"time": 50.72
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 63.25
+		"time": 50.93
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 63.67
+		"time": 51.14
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 63.89
+		"time": 51.36
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 64.10
+		"time": 51.58
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 64.53
+		"time": 51.79
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 64.96
+		"time": 52.01
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 65.39
+		"time": 52.21
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 65.82
+		"time": 52.43
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 66.03
+		"time": 52.65
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 66.67
+		"time": 52.87
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 67.10
+		"time": 53.07
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 67.32
+		"time": 53.27
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 67.53
+		"time": 53.51
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 67.96
+		"time": 54.00
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 68.17
+		"time": 54.20
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 68.39
+		"time": 54.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 68.82
+		"time": 54.64
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 69.17
+		"time": 54.85
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 69.42
+		"time": 55.05
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 69.42
+		"time": 55.27
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 69.42
+		"time": 55.49
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 69.42
+		"time": 55.71
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 71.14
+		"time": 55.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 71.14
+		"time": 56.13
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 71.14
+		"time": 56.33
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 71.14
+		"time": 56.56
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 72.85
+		"time": 56.77
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 72.85
+		"time": 56.99
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 72.85
+		"time": 57.21
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 72.85
+		"time": 57.41
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 74.57
+		"time": 57.63
 	},
 		{
 		"is_impostor": false,
 		"lane": 1,
+		"time":57.84
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 58.07
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 58.26
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 58.47
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 58.71
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 58.92
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 59.12
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 59.33
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 59.54
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 59.76
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 59.98
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 60.17
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 60.40
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 60.61
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 60.83
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 61.04
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 61.25
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 61.46
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 61.68
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 61.90
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 62.11
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 62.33
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 62.53
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 62.75
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 62.97
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 63.19
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 63.39
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 63.59
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 63.83
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 64.25
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 64.25
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 64.25
+	},
+	{
+		"is_impostor": true,
+		"lane": 1,
+		"time": 65.15
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 66.00
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 66.00
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 66.00
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 67.71
+	},
+		{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 67.71
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 67.71
+	},
+	{
+		"is_impostor": true,
+		"lane": 2,
+		"time": 68.55
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 69.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 69.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 69.42
+	},
+	{
+		"is_impostor": true,
+		"lane": 0,
+		"time": 70.28
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 71.14
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 71.14
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 71.14
+	},
+	{
+		"is_impostor": true,
+		"lane": 3,
+		"time": 72.00
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 72.85
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 72.85
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 72.85
+	},
+	{
+		"is_impostor": true,
+		"lane": 1,
+		"time": 73.70
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 74.57
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
 		"time": 74.57
 	},
 	{
@@ -755,9 +1145,14 @@
 		"time": 74.57
 	},
 	{
-		"is_impostor": false,
+		"is_impostor": true,
 		"lane": 3,
-		"time": 74.57
+		"time": 75.40
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 76.28
 	},
 	{
 		"is_impostor": false,
@@ -772,22 +1167,17 @@
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 76.28
+		"time": 77.14
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 76.28
-	},
-	{
-		"is_impostor": false,
-		"lane": 0,
-		"time": 78.00
+		"time": 77.14
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 78.00
+		"time": 77.14
 	},
 	{
 		"is_impostor": false,
@@ -802,6 +1192,31 @@
 	{
 		"is_impostor": false,
 		"lane": 0,
+		"time": 78.00
+	},
+		{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 78.85
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 78.85
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 78.85
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 79.71
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
 		"time": 79.71
 	},
 	{
@@ -812,12 +1227,17 @@
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 79.71
+		"time": 80.57
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 79.71
+		"time": 80.57
+	},
+	{
+		"is_impostor": false,
+		"lane": 0,
+		"time": 80.57
 	},
 	{
 		"is_impostor": false,
@@ -836,524 +1256,407 @@
 	},
 	{
 		"is_impostor": false,
+		"lane": 1,
+		"time": 81.67
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 81.67
+	},
+	{
+		"is_impostor": false,
 		"lane": 3,
-		"time": 81.42
+		"time": 81.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 83.14
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 83.14
+		"time": 81.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 83.14
+		"time": 81.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 83.14
+		"time": 81.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 84.85
+		"time": 82.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 84.85
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 84.85
+		"time": 82.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 84.85
+		"time": 82.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 86.57
+		"time": 82.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 86.57
+		"time": 82.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 86.57
+		"time": 82.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 82.67
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 82.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 86.57
+		"time": 82.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 88.28
+		"time": 82.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 88.28
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 88.28
+		"time": 82.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 88.28
+		"time": 82.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 90.00
-	},
-		{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 90.00
+		"time": 83.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 90.00
+		"time": 83.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 90.00
+		"time": 83.17
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 83.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 83.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 83.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 91.71
+		"time": 83.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 91.71
+		"time": 83.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 91.71
-	},
-	{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 91.71
+		"time": 83.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 93.42
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 93.42
+		"time": 83.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 93.42
+		"time": 83.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 93.42
+		"time": 83.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 95.14
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 95.14
-	},
-	{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 95.14
+		"time": 84.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 95.14
+		"time": 84.17
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 84.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 96.85
+		"time": 84.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 96.85
+		"time": 84.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 96.85
-	},
-	{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 96.85
+		"time": 84.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 100.28
+		"time": 84.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 100.28
+		"time": 84.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 100.28
+		"time": 84.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 100.28
-	},
-		{
-		"is_impostor": false,
-		"lane": 0,
-		"time": 102.00
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 102.00
+		"time": 84.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 102.00
+		"time": 84.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 102.00
+		"time": 84.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 102.71
+		"time": 85.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 102.71
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 102.71
+		"time": 85.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 102.71
+		"time": 85.17
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 85.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 85.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 85.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 105.42
+		"time": 85.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 105.42
+		"time": 85.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 105.42
-	},
-	{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 105.42
+		"time": 85.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 107.14
+		"time": 85.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 107.14
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 107.14
+		"time": 85.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 107.14
+		"time": 85.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 108.85
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 108.85
+		"time": 86.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 108.85
+		"time": 86.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 108.85
+		"time": 86.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 110.57
+		"time": 86.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 110.57
+		"time": 86.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 110.57
+		"time": 86.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 86.67
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 86.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 110.57
+		"time": 86.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 112.28
-	},
-		{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 112.28
+		"time": 86.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 112.28
+		"time": 86.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 112.28
+		"time": 86.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 114.00
+		"time": 87.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 114.00
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 114.00
+		"time": 87.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 114.00
+		"time": 87.17
+	},
+	{
+		"is_impostor": false,
+		"lane": 1,
+		"time": 87.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 2,
+		"time": 87.42
+	},
+	{
+		"is_impostor": false,
+		"lane": 3,
+		"time": 87.42
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 115.71
+		"time": 87.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 115.71
+		"time": 87.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 115.71
-	},
-	{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 115.71
+		"time": 87.67
 	},
 	{
 		"is_impostor": false,
 		"lane": 0,
-		"time": 116.57
+		"time": 87.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 116.57
+		"time": 87.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 116.57
+		"time": 87.92
 	},
 	{
 		"is_impostor": false,
 		"lane": 1,
-		"time": 116.57
-	},
-	{
-		"is_impostor": false,
-		"lane": 0,
-		"time": 117.42
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 117.42
+		"time": 88.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 2,
-		"time": 117.42
+		"time": 88.17
 	},
 	{
 		"is_impostor": false,
 		"lane": 3,
-		"time": 117.42
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 118.28
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 119.14
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 120.00
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 120.85
-	},
-		{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 121.71
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 122.57
-	},
-	{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 123.42
-	},
-		{
-		"is_impostor": false,
-		"lane": 2,
-		"time": 124.28
-	},
-	{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 125.14
-	},
-	{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 126.00
-	},
-		{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 126.85
-	},
-	{
-		"is_impostor": false,
-		"lane": 3,
-		"time": 127.71
-	},
-	{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 128.57
-	},
-		{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 129.42
-	},
-		{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 129.85
-	},
-		{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 130.28
-	},
-		{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 130.71
-	},
-		{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 131.14
-	},
-		{
-		"is_impostor": false,
-		"lane": 1,
-		"time": 131.57
-	},
-	
-	
+		"time": 88.17
+	}
 ]
