@@ -25,6 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://ytcus6g51kxa" path="res://UI/Quit.png" id="13_h1bgf"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="14_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cdjot5oaq2ejx" path="res://Scenes/monster.tscn" id="14_jkdf5"]
+[ext_resource type="AudioStream" uid="uid://b4n0mxl1dcrg2" path="res://Aset/Gameplay/miss.wav" id="21_pdsj5"]
+[ext_resource type="AudioStream" uid="uid://m8t8lttmeyaj" path="res://Aset/Gameplay/jumpscare.wav" id="22_gt3je"]
+[ext_resource type="AudioStream" uid="uid://crs7ag7ulj3wo" path="res://Aset/Gameplay/game over2.wav" id="23_3pmx8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_344ge"]
 font_size = 40
@@ -235,6 +238,16 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_h1bgf")
+
+[node name="MissPlayer" type="AudioStreamPlayer2D" parent="." unique_id=404323740]
+stream = ExtResource("21_pdsj5")
+
+[node name="JumpscarePlayer" type="AudioStreamPlayer2D" parent="." unique_id=653362090]
+stream = ExtResource("22_gt3je")
+
+[node name="GameOverPlayer" type="AudioStreamPlayer2D" parent="." unique_id=552438366]
+process_mode = 2
+stream = ExtResource("23_3pmx8")
 
 [node name="StoryboardPanel" type="ColorRect" parent="CanvasLayer" unique_id=85640833]
 visible = false

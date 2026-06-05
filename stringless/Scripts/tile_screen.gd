@@ -4,3 +4,4 @@ extends Control
 
 func _ready():
 	anim.play("bg_animation")  
+	$menu_bgm.play()
