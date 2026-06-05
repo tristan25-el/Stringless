@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dh1pk434dy3b6" path="res://Scenes/dekorasi.tscn" id="3_hibaj"]
 [ext_resource type="Texture2D" uid="uid://d2wrvqqaeysxy" path="res://Aset/Background/Background 2.png" id="3_kry3j"]
 [ext_resource type="Script" uid="uid://cwoi4anvk400c" path="res://Scripts/background.gd" id="4_21xkr"]
-[ext_resource type="AudioStream" uid="uid://bwm3fd66vymnw" path="res://Pokemon Ruby_Sapphire_Emerald- Littleroot Town.ogg" id="4_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://cjqorirmcjbcs" path="res://Aset/Background/background asset 1.png" id="4_pdsj5"]
 [ext_resource type="Texture2D" uid="uid://6ccog3mwhoou" path="res://Aset/Background/background asset 2.png" id="5_ee4r6"]
 [ext_resource type="Texture2D" uid="uid://bthosjbn336pk" path="res://Aset/Background/background asset 3.png" id="6_gt3je"]
@@ -14,11 +13,12 @@
 [ext_resource type="Script" uid="uid://cppe88phpvvrn" path="res://Scripts/monster.gd" id="8_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://30vn2di787xl" path="res://UI/game over1.png" id="9_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://ci2jxlt11vrvb" path="res://Aset/Gameplay/Manekin jumpscare Ver.3.png" id="9_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://m3i1roblrvnx" path="res://Aset/Gameplay/StringlessOST.mp3" id="10_hibaj"]
 [ext_resource type="Texture2D" uid="uid://bf3r6cvupb8jq" path="res://UI/button.png" id="10_jkdf5"]
 [ext_resource type="Script" uid="uid://cv0qfvhvp0bkx" path="res://Scripts/button.gd" id="11_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://cff8404bcg7f2" path="res://UI/Restart.png" id="12_k12tt"]
 [ext_resource type="Texture2D" uid="uid://ytcus6g51kxa" path="res://UI/Quit.png" id="13_h1bgf"]
-[ext_resource type="Script" uid="uid://di5hecimvrw1a" path="res://Scenes/player.gd" id="14_hibaj"]
+[ext_resource type="Script" path="res://Scenes/player.gd" id="14_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cdjot5oaq2ejx" path="res://Scenes/monster.tscn" id="14_jkdf5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_344ge"]
@@ -49,7 +49,7 @@ texture = ExtResource("3_kry3j")
 script = ExtResource("4_21xkr")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1298069848]
-stream = ExtResource("4_jjvhh")
+stream = ExtResource("10_hibaj")
 
 [node name="HitLine" type="ColorRect" parent="." unique_id=843247999]
 offset_top = 1350.0

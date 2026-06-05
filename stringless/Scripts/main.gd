@@ -72,13 +72,15 @@ func load_beat_map(file_path: String):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Panggil fungsi saat game dimulai
 	load_beat_map("res://Aset/Gameplay/beats.json")
 	print("Data Beat Map siap! Jumlah note: ", beat_map.size())
 	judge_feedback.visible = false
-	# Start our countdown in the negatives (e.g., -2.0 seconds)
-	intro_time = -spawn_lead_time
-	# FIX: Removed the stale position capture from here because UI container anchor coordinates are not yet fully resolved
+	
+	# REMOVED DELAY: Play the music immediately on startup
+	if music_player:
+		music_player.play()
+		music_started = true
+	
 	jumpscare.pivot_offset = jumpscare.size / 2
 	update_hearts()
 	update_strings()
@@ -91,20 +93,11 @@ func _process(delta: float) -> void:
 	if beat_map.size() == 0:
 		return
 		
-	# INTRO COUNTDOWN TRACKER 
-	if not music_started:
-		intro_time += delta
-		current_game_time = intro_time # Track negative time here
+	# REMOVED DELAY TRACKER: Skip loop if the music isn't actively playing
+	if not music_player.playing:
+		return
 		
-		# Once the negative countdown hits 0, start the music!
-		if intro_time >= 0.0:
-			music_player.play()
-			music_started = true
-	else:
-		# If the music stops playing after starting, pause execution
-		if not music_player.playing:
-			return
-		current_game_time = get_song_time() # Track song position here
+	current_game_time = get_song_time() # Track song position cleanly here
 	
 	# SPAWNING LOOP (uses current_game_time)
 	while current_note_index < beat_map.size():
@@ -116,6 +109,7 @@ func _process(delta: float) -> void:
 			current_note_index += 1 
 		else:
 			break
+			
 	decor_timer_left += delta
 	if decor_timer_left >= next_spawn_left:
 		decor_timer_left = 0.0
