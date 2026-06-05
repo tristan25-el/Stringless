@@ -9,12 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://cjqorirmcjbcs" path="res://Aset/Background/background asset 1.png" id="4_pdsj5"]
 [ext_resource type="Texture2D" uid="uid://6ccog3mwhoou" path="res://Aset/Background/background asset 2.png" id="5_ee4r6"]
 [ext_resource type="Texture2D" uid="uid://bthosjbn336pk" path="res://Aset/Background/background asset 3.png" id="6_gt3je"]
+[ext_resource type="Texture2D" uid="uid://ckeoyxek27yu6" path="res://Story board/storyboard1.png" id="7_u50mg"]
 [ext_resource type="PackedScene" uid="uid://bjro205cashd3" path="res://Scenes/player.tscn" id="8_344ge"]
+[ext_resource type="Texture2D" uid="uid://b68i24v5n0htt" path="res://Story board/storyboard2.png" id="8_cbgmd"]
 [ext_resource type="Script" uid="uid://cppe88phpvvrn" path="res://Scripts/monster.gd" id="8_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://c4bqkm3i1dofs" path="res://Story board/storyboard3.png" id="9_1w6v2"]
 [ext_resource type="Texture2D" uid="uid://30vn2di787xl" path="res://UI/game over1.png" id="9_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://ci2jxlt11vrvb" path="res://Aset/Gameplay/Manekin jumpscare Ver.3.png" id="9_ynf5e"]
 [ext_resource type="AudioStream" uid="uid://m3i1roblrvnx" path="res://Aset/Gameplay/StringlessOST.mp3" id="10_hibaj"]
 [ext_resource type="Texture2D" uid="uid://bf3r6cvupb8jq" path="res://UI/button.png" id="10_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://g71ag3fsa76k" path="res://Story board/ending story1.png" id="10_ueoa1"]
+[ext_resource type="Texture2D" uid="uid://boj67tcnrhw2t" path="res://Story board/Tak berjudul58_20260605174402.png" id="11_6vcvc"]
 [ext_resource type="Script" uid="uid://cv0qfvhvp0bkx" path="res://Scripts/button.gd" id="11_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://cff8404bcg7f2" path="res://UI/Restart.png" id="12_k12tt"]
 [ext_resource type="Texture2D" uid="uid://ytcus6g51kxa" path="res://UI/Quit.png" id="13_h1bgf"]
@@ -36,6 +41,8 @@ script = ExtResource("1_bo1nx")
 tile_scene = ExtResource("3_8gbba")
 decoration_scene = ExtResource("3_hibaj")
 decor_textures = Array[Texture2D]([ExtResource("4_pdsj5"), ExtResource("5_ee4r6"), ExtResource("6_gt3je")])
+intro_images = Array[Texture2D]([ExtResource("7_u50mg"), ExtResource("8_cbgmd"), ExtResource("9_1w6v2")])
+outro_images = Array[Texture2D]([ExtResource("10_ueoa1"), ExtResource("11_6vcvc")])
 
 [node name="Tracklines" type="Node2D" parent="." unique_id=309762461]
 script = ExtResource("3_6bp64")
@@ -228,3 +235,22 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_h1bgf")
+
+[node name="StoryboardPanel" type="ColorRect" parent="CanvasLayer" unique_id=85640833]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StoryboardImage" type="TextureRect" parent="CanvasLayer/StoryboardPanel" unique_id=1383798735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5

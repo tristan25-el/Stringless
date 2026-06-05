@@ -21,6 +21,12 @@ extends Node2D
 @export var decor_spawn_min := 0.8 # Minimum delay for a wall object to spawn
 @export var decor_spawn_max := 2.5 # Maximum delay for a wall object to spawn
 
+# -- VARIABEL STORYBOARD BARU --
+@export var intro_images: Array[Texture2D] = []
+@export var outro_images: Array[Texture2D] = []
+@onready var storyboard_panel = $CanvasLayer/StoryboardPanel
+@onready var storyboard_image = $CanvasLayer/StoryboardPanel/StoryboardImage
+
 var decor_timer_left := 0.0
 var decor_timer_right := 0.0
 var next_spawn_left := 0.0
@@ -54,6 +60,11 @@ var full_heart = preload("res://UI/heart full.png")
 var empty_heart = preload("res://UI/heart emptyl.png")
 var is_game_over := false
 
+var current_story_index := 0
+var is_playing_story := false
+var is_ending := false
+var story_tween: Tween
+
 func load_beat_map(file_path: String):
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
@@ -76,17 +87,19 @@ func _ready() -> void:
 	print("Data Beat Map siap! Jumlah note: ", beat_map.size())
 	judge_feedback.visible = false
 	
-	# REMOVED DELAY: Play the music immediately on startup
-	if music_player:
-		music_player.play()
-		music_started = true
-	
 	jumpscare.pivot_offset = jumpscare.size / 2
 	update_hearts()
 	update_strings()
 	combo_label.pivot_offset = combo_label.size / 2
 	game_over_panel.visible = false
 	update_player_animation()
+	
+	# Siapkan pendeteksi KEMENANGAN (saat lagu habis)
+	if music_player:
+		music_player.finished.connect(_on_music_finished)
+	
+	# MULAI INTRO STORYBOARD SEBELUM GAME MULAI
+	start_storyboard(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -409,3 +422,79 @@ func update_player_animation():
 			player_character.set_base_animation("idle_2")
 		elif current_string_tier == 0:
 			player_character.set_base_animation("idle")
+
+# ==========================================
+# LOGIKA STORYBOARD & KONDISI MENANG
+# ==========================================
+
+func start_storyboard(is_for_ending: bool):
+	is_ending = is_for_ending
+	is_playing_story = true
+	current_story_index = 0
+	
+	var img_array = outro_images if is_ending else intro_images
+	
+	if img_array.is_empty():
+		# Jika array gambar di Inspector kosong, langsung mulai/akhiri game
+		if is_ending:
+			show_win_screen()
+		else:
+			start_actual_game()
+		return
+		
+	storyboard_panel.visible = true
+	show_story_image()
+
+func show_story_image():
+	var img_array = outro_images if is_ending else intro_images
+	
+	if current_story_index < img_array.size():
+		storyboard_image.texture = img_array[current_story_index]
+		storyboard_image.modulate.a = 0.0 # Bikin gambar transparan di awal
+		
+		# Animasi Fade In (Muncul perlahan selama 1 detik)
+		story_tween = create_tween()
+		story_tween.tween_property(storyboard_image, "modulate:a", 1.0, 1.0)
+		
+		# Tunggu 3 detik agar pemain bisa melihat/membaca
+		story_tween.tween_interval(3.0)
+		
+		# Animasi Fade Out (Menghilang perlahan selama 1 detik)
+		story_tween.tween_property(storyboard_image, "modulate:a", 0.0, 1.0)
+		
+		await story_tween.finished
+		current_story_index += 1
+		show_story_image() # Lanjut ke gambar berikutnya di array
+	else:
+		# Jika semua gambar sudah habis ditampilkan
+		if is_ending:
+			show_win_screen()
+		else:
+			start_actual_game()
+
+func start_actual_game():
+	is_playing_story = false
+	storyboard_panel.visible = false
+	if music_player:
+		music_player.play() # Musik dan rintangan baru mulai di sini!
+		music_started = true
+
+# Fungsi ini akan otomatis dipanggil Godot saat lagu selesai
+func _on_music_finished():
+	# Beri jeda sedikit untuk memastikan tile terakhir sudah tersentuh
+	while get_tree().get_nodes_in_group("notes").size() > 0:
+		await get_tree().create_timer(0.5).timeout
+		
+	# Cek apakah nyawa pemain masih ada (Berarti Menang)
+	if current_health > 0 and current_strings > 0 and not is_game_over:
+		print("LAGU SELESAI, PEMAIN MENANG!")
+		is_game_over = true
+		set_process(false) # Hentikan proses game utama
+		start_storyboard(true) # Mainkan Outro/Ending
+
+func show_win_screen():
+	storyboard_panel.visible = false
+	print("GAME COMPLETELY FINISHED!")
+	# Untuk saat ini kita tampilkan panel game over
+	game_over_panel.visible = true
+	get_tree().paused = true
