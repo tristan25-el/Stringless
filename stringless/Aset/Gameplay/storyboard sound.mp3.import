@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpe67uqqnlupp"
+path="res://.godot/imported/storyboard sound.mp3-087c9ea31e3d1d673ab0b0ce46414ae7.mp3str"
+
+[deps]
+
+source_file="res://Aset/Gameplay/storyboard sound.mp3"
+dest_files=["res://.godot/imported/storyboard sound.mp3-087c9ea31e3d1d673ab0b0ce46414ae7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

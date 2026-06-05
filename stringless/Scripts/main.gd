@@ -16,6 +16,9 @@ extends Node2D
 ]
 @onready var game_over_panel = $CanvasLayer/GameOverPanel
 @onready var monster = $Monster
+@onready var miss_player = $MissPlayer
+@onready var jumpscare_player = $JumpscarePlayer
+@onready var game_over_player = $GameOverPlayer
 @export var decoration_scene: PackedScene
 @export var decor_textures: Array[Texture2D] = []
 @export var decor_spawn_min := 0.8 # Minimum delay for a wall object to spawn
@@ -298,6 +301,7 @@ func show_judgement(texture):
 	
 # AUTO MISS
 func register_miss():
+	miss_player.play()
 	if combo > 0:
 		combo = 0
 	current_strings -= 1
@@ -309,6 +313,7 @@ func register_miss():
 	show_judgement(miss_texture)
 	
 func show_jumpscare(world_pos: Vector2):
+	jumpscare_player.play()
 	jumpscare.texture = JUMPSCARE_TEXTURE
 	jumpscare.visible = true
 	jumpscare.position = world_pos
@@ -359,6 +364,7 @@ func game_over():
 	music_player.stop()
 	set_process(false)
 	game_over_panel.visible = true
+	game_over_player.play()
 	get_tree().paused = true
 
 func update_strings():

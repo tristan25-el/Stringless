@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dqxp3mv613eoy" path="res://Aset/Main Menu/main menu7.png" id="13_nehyh"]
 [ext_resource type="Texture2D" uid="uid://ck6gwe2tn274k" path="res://Aset/Main Menu/main menu8.png" id="14_01nn5"]
 [ext_resource type="Texture2D" uid="uid://cgiqu7tla5ck5" path="res://Aset/Main Menu/main menu9.png" id="15_u0el2"]
+[ext_resource type="AudioStream" uid="uid://bhgqkc12cw5iu" path="res://Aset/Gameplay/Main Menu.mp3" id="16_ghe3i"]
 
 [sub_resource type="Animation" id="Animation_hk6ub"]
 length = 0.001
@@ -144,3 +145,6 @@ texture = ExtResource("4_4hk4m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1760948257]
 libraries/ = SubResource("AnimationLibrary_de0o6")
+
+[node name="menu_bgm" type="AudioStreamPlayer2D" parent="." unique_id=2107516699]
+stream = ExtResource("16_ghe3i")
