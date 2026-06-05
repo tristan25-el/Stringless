@@ -31,6 +31,7 @@ var score := 0
 var combo := 0
 var judge_tween: Tween
 
+
 var decor_timer: float = 0.0
 var time_between_decor: float = 2.0 # Rak baju baru muncul tiap 2 detik
 

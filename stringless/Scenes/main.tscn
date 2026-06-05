@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cv0qfvhvp0bkx" path="res://Scripts/button.gd" id="11_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://cff8404bcg7f2" path="res://UI/Restart.png" id="12_k12tt"]
 [ext_resource type="Texture2D" uid="uid://ytcus6g51kxa" path="res://UI/Quit.png" id="13_h1bgf"]
+[ext_resource type="Script" uid="uid://di5hecimvrw1a" path="res://Scenes/player.gd" id="14_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cdjot5oaq2ejx" path="res://Scenes/monster.tscn" id="14_jkdf5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_344ge"]
@@ -61,6 +62,7 @@ color = Color(0.26666668, 0.047058824, 0.047058824, 1)
 script = ExtResource("8_wsu2k")
 
 [node name="Player" parent="." unique_id=1287569934 instance=ExtResource("8_344ge")]
+script = ExtResource("14_hibaj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=584599704]
 

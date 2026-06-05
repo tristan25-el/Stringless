@@ -5,7 +5,7 @@ extends Node2D
 @onready var music_player: AudioStreamPlayer = $AudioStreamPlayer 
 @export var global_offset := 0.0
 @onready var judge_feedback = $CanvasLayer/JudgeFeedback
-@onready var player_character = $Player
+@onready var player_character = $Player as Node2D
 @onready var jumpscare = $CanvasLayer/Jumpscare
 @onready var string_label = $CanvasLayer/StringLabel
 @onready var combo_label = $CanvasLayer/ComboLabel
@@ -48,7 +48,8 @@ var combo := 0
 var judge_tween: Tween
 var max_health := 3
 var current_health := 3
-var current_strings := 100
+var current_strings := 0
+var current_string_tier := 0
 var full_heart = preload("res://UI/heart full.png")
 var empty_heart = preload("res://UI/heart emptyl.png")
 var is_game_over := false
@@ -83,6 +84,7 @@ func _ready() -> void:
 	update_strings()
 	combo_label.pivot_offset = combo_label.size / 2
 	game_over_panel.visible = false
+	update_player_animation()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -307,6 +309,7 @@ func register_miss():
 	current_strings -= 1
 	update_strings()
 	update_combo()
+	update_player_animation()
 	if current_strings <= 0:
 		game_over()
 	show_judgement(miss_texture)
@@ -385,3 +388,30 @@ func update_combo():
 func add_string(amount := 1):
 	current_strings += amount
 	update_strings()
+	update_player_animation()
+	
+func update_player_animation():
+	if player_character == null:
+		print("DEBUG ERROR: player_character masih KOSONG / NULL! Periksa Inspector main.gd Anda.")
+		return
+		
+	if not player_character.has_method("set_base_animation"):
+		print("DEBUG ERROR: Node Player ditemukan, tapi tidak punya fungsi set_base_animation. Periksa skrip player.gd Anda.")
+		return
+		
+	var target_tier := 0
+	if current_strings >= 60:
+		target_tier = 2
+	elif current_strings >= 30:
+		target_tier = 1
+		
+	if target_tier != current_string_tier:
+		print("DEBUG SUCCESS: Mengubah tier dari ", current_string_tier, " ke ", target_tier, ". Jumlah string: ", current_strings)
+		current_string_tier = target_tier
+		
+		if current_string_tier == 2:
+			player_character.set_base_animation("idle_3")
+		elif current_string_tier == 1:
+			player_character.set_base_animation("idle_2")
+		elif current_string_tier == 0:
+			player_character.set_base_animation("idle")
