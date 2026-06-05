@@ -53,9 +53,6 @@ var full_heart = preload("res://UI/heart full.png")
 var empty_heart = preload("res://UI/heart emptyl.png")
 var is_game_over := false
 
-var decor_timer: float = 0.0
-var time_between_decor: float = 2.0 # Rak baju baru muncul tiap 2 detik
-
 func load_beat_map(file_path: String):
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
@@ -106,13 +103,6 @@ func _process(delta: float) -> void:
 		if not music_player.playing:
 			return
 		current_game_time = get_song_time() # Track song position here
-	
-	if music_started and music_player.playing:
-		decor_timer -= delta
-		if decor_timer <= 0.0:
-			spawn_random_decoration()
-			# Atur ulang waktu agar muncul secara acak antara 1.5 s/d 3.5 detik
-			decor_timer = randf_range(1.5, 3.5)
 	
 	# SPAWNING LOOP (uses current_game_time)
 	while current_note_index < beat_map.size():
@@ -395,24 +385,3 @@ func update_combo():
 func add_string(amount := 1):
 	current_strings += amount
 	update_strings()
-	
-func spawn_random_decoration():
-	if decoration_scene == null or decor_textures.is_empty():
-		return
-		
-	var new_decor = decoration_scene.instantiate()
-	add_child(new_decor)
-	
-	# 1. Tetapkan Gambar
-	new_decor.texture = decor_textures.pick_random()
-	
-	# 2. Tentukan Jalur Bayangan (Kiri Luar = -0.7, Kanan Luar = 3.7)
-	# Anda bisa mengecilkan angka minusnya (misal -0.5) jika terlalu jauh dari garis
-	var lane_bayangan = -0.85 if randi() % 2 == 0 else 4.0
-	
-	# 3. Hitung Waktu Jatuh (Waktu saat ini + Lead Time)
-	var waktu_jatuh = current_game_time + spawn_lead_time
-	
-	# 4. Kirim data ke dekorasi agar dia menghitung garis miringnya sendiri!
-	if new_decor.has_method("initialize"):
-		new_decor.initialize(waktu_jatuh, spawn_lead_time, lane_bayangan)
